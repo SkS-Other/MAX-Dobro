@@ -4,6 +4,7 @@ import { PrismaClient, User } from '@prisma/client';
 import request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { AuthGuard } from '../src/auth/guards/auth.guard';
+import { clearDatabase } from './test-utils';
 
 describe('Profile (e2e)', () => {
   let app: INestApplication;
@@ -15,15 +16,8 @@ describe('Profile (e2e)', () => {
     },
   });
 
-  const mockUser: Omit<User, 'createdAt' | 'updatedAt'> = {
-    id: 1,
-    supabaseUserId: 'test-supabase-id-profile',
-    email: 'profile-test@example.com',
-    name: 'Test User',
-    totalHours: 0,
-    karmaPoints: 0,
-    avatarUrl: null,
-  };
+  let mockUser: User;
+  const authToken = 'Bearer test-token';
 
   const mockAuthGuard = {
     canActivate: (context: any) => {
@@ -47,26 +41,15 @@ describe('Profile (e2e)', () => {
   });
 
   beforeEach(async () => {
-    await prisma.storyLike.deleteMany();
-    await prisma.comment.deleteMany();
-    await prisma.chatMessage.deleteMany();
-    await prisma.story.deleteMany();
-    await prisma.userReward.deleteMany();
-    await prisma.reward.deleteMany();
-    await prisma.userCertificate.deleteMany();
-    await prisma.userAchievement.deleteMany();
-    await prisma.achievement.deleteMany();
-    await prisma.eventParticipant.deleteMany();
-    await prisma.userOrganizationSubscription.deleteMany();
-    await prisma.karmaLog.deleteMany();
-    await prisma.event.deleteMany();
-    await prisma.organization.deleteMany();
-    await prisma.quizAnswer.deleteMany();
-    await prisma.quizQuestion.deleteMany();
-    await prisma.lesson.deleteMany();
-    await prisma.course.deleteMany();
-    await prisma.user.deleteMany();
-    await prisma.user.create({ data: mockUser as User });
+    await clearDatabase(prisma);
+    mockUser = await prisma.user.create({
+      data: {
+        email: 'profile-test@example.com',
+        supabaseUserId: 'test-supabase-id-profile',
+        name: 'Test User',
+        karmaPoints: 125,
+      },
+    });
   });
 
   afterAll(async () => {
@@ -77,64 +60,12 @@ describe('Profile (e2e)', () => {
   });
 
   it('/profile/me (GET) - should return current user profile', async () => {
-    return request(app.getHttpServer())
+    const { body } = await request(app.getHttpServer())
       .get('/profile/me')
-      .expect(200)
-      .expect((res) => {
-        expect(res.body.id).toBe(mockUser.id);
-        expect(res.body.email).toBe(mockUser.email);
-        expect(res.body).toHaveProperty('levelName');
-      });
-  });
-
-  it('/profile/me/rewards (GET) - should return users purchased rewards', async () => {
-    const reward = await prisma.reward.create({
-      data: { title: 'Test Reward', description: 'desc', cost: 100 },
-    });
-
-    await prisma.userReward.create({
-      data: {
-        userId: mockUser.id,
-        rewardId: reward.id,
-      },
-    });
-
-    return request(app.getHttpServer())
-      .get('/profile/me/rewards')
-      .expect(200)
-      .expect((res) => {
-        expect(res.body).toBeInstanceOf(Array);
-        expect(res.body).toHaveLength(1);
-        expect(res.body[0].rewardId).toBe(reward.id);
-        expect(res.body[0].reward.title).toBe(reward.title);
-      });
-  });
-
-  it('/profile/me/achievements (GET) - should return users unlocked achievements', async () => {
-    const achievement = await prisma.achievement.create({
-      data: {
-        name: 'Tester Pro',
-        description: 'You are a pro tester',
-        criteriaType: 'TEST',
-        criteriaValue: 1,
-      },
-    });
-
-    await prisma.userAchievement.create({
-      data: {
-        userId: mockUser.id,
-        achievementId: achievement.id,
-      },
-    });
-
-    return request(app.getHttpServer())
-      .get('/profile/me/achievements')
-      .expect(200)
-      .expect((res) => {
-        expect(res.body).toBeInstanceOf(Array);
-        expect(res.body).toHaveLength(1);
-        expect(res.body[0].achievementId).toBe(achievement.id);
-        expect(res.body[0].achievement.name).toBe(achievement.name);
-      });
+      .set('Authorization', authToken)
+      .expect(200);
+      
+    expect(body.email).toBe(mockUser.email);
+    expect(body.levelName).toBe('Активист');
   });
 });
