@@ -3,7 +3,6 @@ import {useNavigate} from 'react-router';
 import {ArrowLeft, Bell, ChevronRight, FileText, LogOut, MessageSquare, ShieldCheck, UserCircle} from 'lucide-react';
 import type {ProfileSubScreen} from '../../../lib/types';
 import LogoutConfirmationModal from '../../../components/ui/LogoutConfirmationModal';
-import {APP_VERSION} from '../../../lib/constants';
 
 const SettingsSection: React.FC<{ title: string; children: React.ReactNode }> = ({title, children}) => (
   <section>
@@ -125,7 +124,6 @@ const SettingsPage: React.FC<{ onBack: () => void; onLogout: () => void; }> = ({
             }}/>
             <SettingsRow label="Политика конфиденциальности" Icon={FileText} onClick={() => {
             }}/>
-            <SettingsRow label="Версия" Icon={FileText} info={APP_VERSION}/>
           </SettingsSection>
 
           <div className="pt-4">
