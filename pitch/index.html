@@ -50,6 +50,9 @@
   .sub{font-size:21px;color:var(--ink2);font-weight:500;line-height:1.4}
   .muted{color:var(--muted)}
   .accent{color:var(--blue)} .coral{color:var(--coral)} .green{color:var(--green)}
+  .src{font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--muted);line-height:1.35}
+  .src a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(0,122,255,.35)}
+  .src a:hover{border-bottom-color:var(--blue)}
 
   .chip{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:999px;font-weight:700;font-size:14px}
   .chip.blue{background:rgba(0,122,255,.10);color:var(--blue)}
@@ -197,12 +200,7 @@
     <div class="pad" style="flex-direction:row;align-items:center;gap:46px">
       <div style="flex:1.12">
         <h1 class="title big" style="font-size:90px">MAX <span class="accent grad">Добро</span></h1>
-        <p class="sub" style="margin-top:20px;font-size:24px;max-width:540px">Добрые дела в мессенджере, где молодёжь уже проводит время.</p>
-        <div style="margin-top:38px;display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:600;font-size:15px;flex-wrap:wrap">
-          <span style="color:var(--ink);font-weight:800">Данилов Михаил</span><span>·</span>
-          <span style="color:var(--ink);font-weight:800">Корнилов Кирилл</span><span>·</span>
-          <span style="color:var(--ink);font-weight:800">Шутов Кирилл</span>
-        </div>
+        <p class="sub" style="margin-top:20px;font-size:24px;max-width:540px">Добрые дела в мессенджере. Ставим туда, где аудитория уже сидит.</p>
       </div>
       <div style="flex:1.05;display:flex;justify-content:center">
         <div class="card" style="padding:22px 24px;display:flex;gap:22px;align-items:flex-start">
@@ -227,43 +225,43 @@
     <div class="qrtag"><img src="assets/QR%20MAX.png" alt="MAX"><span>MAX</span></div>
     <div class="pad">
       <div class="kicker"><span class="num">02</span> &nbsp;Рынок и аудитория</div>
-      <h1 class="title" style="margin-top:14px">Денег на волонтёрство хватает,<br><span class="accent">а сервиса для молодёжи нет</span></h1>
-      <div style="display:flex;gap:24px;margin-top:26px;flex:1">
-        <div style="flex:.9;display:flex;flex-direction:column;gap:14px">
-          <div style="font-weight:800;font-size:14px;color:#E0521F">Ядро аудитории: 16–35 лет</div>
-          <div style="display:flex;flex-direction:column;gap:12px;flex:1">
-            <div class="card" style="padding:16px 18px;flex:1;display:flex;gap:12px;align-items:flex-start">
-              <svg class="ico" style="margin-top:2px"><use href="#i-building"/></svg>
-              <div><b style="font-size:16px">Национальные проекты</b><div class="muted" style="font-size:14.5px;font-weight:600;margin-top:4px;line-height:1.4">Волонтёрство — приоритет: выделены бюджеты, гранты и региональные программы.</div></div>
+      <h1 class="title" style="margin-top:12px;font-size:38px">Готовность есть.<br><span class="accent">Не хватает понятного входа</span></h1>
+      <div style="display:flex;gap:24px;margin-top:18px;flex:1;min-height:0">
+        <div style="flex:.95;display:flex;flex-direction:column;gap:12px">
+          <div style="font-weight:800;font-size:14px;color:#E0521F;text-align:center">Целевая аудитория: 16–35 лет</div>
+          <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+            <div class="card" style="padding:16px 18px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px">
+              <svg class="ico"><use href="#i-sprout"/></svg>
+              <div><b style="font-size:16px">Потенциал 69%</b><div class="muted" style="font-size:14px;font-weight:600;margin-top:4px;line-height:1.4">37% уже помогают, ещё 32% хотели бы. Рост — во входе, не в агитации.</div></div>
             </div>
-            <div class="card" style="padding:16px 18px;flex:1;display:flex;gap:12px;align-items:flex-start">
-              <svg class="ico" style="margin-top:2px"><use href="#i-chat"/></svg>
-              <div><b style="font-size:16px">Мессенджеры</b><div class="muted" style="font-size:14.5px;font-weight:600;margin-top:4px;line-height:1.4">Молодёжь проводит время в мессенджерах. MAX — национальная платформа со своим охватом.</div></div>
+            <div class="card" style="padding:16px 18px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px">
+              <svg class="ico"><use href="#i-users"/></svg>
+              <div><b style="font-size:16px">Сами, не ведомства</b><div class="muted" style="font-size:14px;font-weight:600;margin-top:4px;line-height:1.4">40% приходят самостоятельно. Государство организует только 7%.</div></div>
             </div>
-            <div class="card" style="padding:16px 18px;flex:1;display:flex;gap:12px;align-items:flex-start">
-              <svg class="ico" style="margin-top:2px"><use href="#i-cap"/></svg>
-              <div><b style="font-size:16px">Вузы и портфолио</b><div class="muted" style="font-size:14.5px;font-weight:600;margin-top:4px;line-height:1.4">Нужны подтверждённые «часы добра» и портфолио абитуриента — растёт спрос на цифровой учёт.</div></div>
+            <div class="card" style="padding:16px 18px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px">
+              <svg class="ico"><use href="#i-chat"/></svg>
+              <div><b style="font-size:16px">Мессенджеры</b><div class="muted" style="font-size:14px;font-weight:600;margin-top:4px;line-height:1.4">Мини-приложение ставится в любой мессенджер: MAX, Telegram или следующий.</div></div>
             </div>
           </div>
         </div>
-        <div style="flex:1.1;display:flex;flex-direction:column;gap:14px">
-          <div class="muted" style="font-weight:700;font-size:14px;letter-spacing:.04em">ВЦИОМ, 2023 · «Волонтёрство в России»</div>
-          <div class="grid" style="grid-template-columns:1fr 1fr;gap:14px;flex:1">
-            <div class="card stat" style="padding:20px 22px;display:flex;flex-direction:column;justify-content:center">
-              <div class="n accent" style="font-size:58px">48%</div>
-              <div style="font-weight:700;font-size:15px;margin-top:6px">узнают о добрых делах из соцсетей — значит сервис должен жить там же</div>
+        <div style="flex:1.05;display:flex;flex-direction:column;gap:10px">
+          <div class="src">ВЦИОМ, 15–17 ноября 2025 · <a href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/volonterstvo-kak-vybor" target="_blank" rel="noopener">«Волонтёрство как выбор»</a></div>
+          <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;flex:1">
+            <div class="card stat" style="padding:16px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+              <div class="n coral" style="font-size:52px">54%</div>
+              <div style="font-weight:700;font-size:14.5px;margin-top:6px;line-height:1.35">не доверяют благотворительным организациям</div>
             </div>
-            <div class="card stat" style="padding:20px 22px;display:flex;flex-direction:column;justify-content:center">
-              <div class="n coral" style="font-size:58px">61%</div>
-              <div style="font-weight:700;font-size:15px;margin-top:6px">бросили волонтёрить из-за отсутствия наград — нужна мотивация</div>
+            <div class="card stat" style="padding:16px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+              <div class="n accent" style="font-size:52px">70%</div>
+              <div style="font-weight:700;font-size:14.5px;margin-top:6px;line-height:1.35">мешает нехватка времени</div>
             </div>
-            <div class="card stat" style="padding:20px 22px;grid-column:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-              <div style="display:flex;align-items:center;gap:26px">
-                <div style="display:flex;align-items:baseline;gap:10px"><span class="n green" style="font-size:46px">34%</span><span class="muted" style="font-weight:700">навыки</span></div>
-                <div style="width:1px;height:46px;background:var(--line)"></div>
-                <div style="display:flex;align-items:baseline;gap:10px"><span class="n green" style="font-size:46px">33%</span><span class="muted" style="font-weight:700">друзья</span></div>
+            <div class="card stat" style="padding:14px 18px;grid-column:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+              <div style="display:flex;align-items:center;gap:22px">
+                <div style="display:flex;align-items:baseline;gap:8px"><span class="n green" style="font-size:40px">42%</span><span class="muted" style="font-weight:700;font-size:13px">не знают<br>о проектах</span></div>
+                <div style="width:1px;height:42px;background:var(--line)"></div>
+                <div style="display:flex;align-items:baseline;gap:8px"><span class="n green" style="font-size:40px">40%</span><span class="muted" style="font-weight:700;font-size:13px">кажется, что<br>ничего не изменить</span></div>
               </div>
-              <div style="font-weight:700;font-size:15px;color:var(--ink2)">главные мотивы участия</div>
+              <div style="font-weight:700;font-size:14px;color:var(--ink2);text-align:center;line-height:1.35">Карта дел рядом, прозрачный учёт и видимый прогресс закрывают разрыв</div>
             </div>
           </div>
         </div>
@@ -282,25 +280,25 @@
         <div class="card" style="padding:22px 26px;display:flex;gap:18px;align-items:flex-start">
           <svg class="ico ico-lg"><use href="#i-door"/></svg>
           <div><div style="font-weight:800;font-size:20px;margin-bottom:5px">Высокий порог входа</div>
-          <div class="muted" style="font-size:16px;line-height:1.45">Отдельные сайты, долгая регистрация, анкеты. Сервисы оторваны от привычной цифровой среды.</div></div>
+          <div class="muted" style="font-size:16px;line-height:1.45">42% мешает нехватка информации, куда обратиться. Отдельные сайты и анкеты оторваны от чата, где человек уже сидит.</div></div>
         </div>
         <div class="card" style="padding:22px 26px;display:flex;gap:18px;align-items:flex-start">
           <svg class="ico ico-lg"><use href="#i-down"/></svg>
           <div><div style="font-weight:800;font-size:20px;margin-bottom:5px">Разрыв в вовлечённости</div>
-          <div class="muted" style="font-size:16px;line-height:1.45">Ядро волонтёров — люди 35+. Молодёжь хочет помогать, но не находит удобных форматов.</div></div>
+          <div class="muted" style="font-size:16px;line-height:1.45">Пик участия — 35–44 года (45%). У 18–34 вовлечённость ниже: молодёжи нужен формат, который открывается в мессенджере.</div></div>
         </div>
         <div class="card" style="padding:22px 26px;display:flex;gap:18px;align-items:flex-start">
           <svg class="ico ico-lg"><use href="#i-trophy"/></svg>
-          <div><div style="font-weight:800;font-size:20px;margin-bottom:5px">Нет мотивации</div>
-          <div class="muted" style="font-size:16px;line-height:1.45">Ни признания, ни видимого прогресса — те самые 61%, что бросают, уходят именно поэтому.</div></div>
+          <div><div style="font-weight:800;font-size:20px;margin-bottom:5px">Не виден результат</div>
+          <div class="muted" style="font-size:16px;line-height:1.45">27% не видят эффект своей помощи, 27% отмечают низкое признание. Нужны часы, карма и сертификат в профиле.</div></div>
         </div>
         <div class="card" style="padding:22px 26px;display:flex;gap:18px;align-items:flex-start">
           <svg class="ico ico-lg"><use href="#i-person"/></svg>
           <div><div style="font-weight:800;font-size:20px;margin-bottom:5px">Социальный барьер</div>
-          <div class="muted" style="font-size:16px;line-height:1.45">«Боюсь идти один». Нет простого способа позвать друга и пойти на доброе дело за компанию.</div></div>
+          <div class="muted" style="font-size:16px;line-height:1.45">26% мешают страх и неуверенность. 23% приходят через друзей — приглашение в чат события снижает этот барьер.</div></div>
         </div>
       </div>
-      <div class="muted" style="font-size:14.5px;margin-top:14px;font-weight:600">Каждый из четырёх барьеров мы закрываем продуктом — по пунктам на следующих слайдах.</div>
+      <div class="src" style="margin-top:14px">Каждый из четырёх барьеров закрываем продуктом. Цифры: ВЦИОМ, 15–17 ноября 2025 · <a href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/volonterstvo-kak-vybor" target="_blank" rel="noopener">«Волонтёрство как выбор»</a></div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>03</div></div>
   </section>
@@ -313,7 +311,7 @@
         <div class="kicker"><span class="num">04</span> &nbsp;Что предлагаем</div>
         <h1 class="title" style="margin-top:14px">Всё нужное<br>в <span class="accent">одном приложении</span></h1>
         <div style="display:flex;flex-direction:column;gap:14px;margin-top:28px">
-          <div class="feat"><div class="ic"><svg class="ico"><use href="#i-phone"/></svg></div><div><b>Снижаем порог</b><div class="d">Вход через MAX или Telegram, без логинов и отдельной регистрации.</div></div></div>
+          <div class="feat"><div class="ic"><svg class="ico"><use href="#i-phone"/></svg></div><div><b>Снижаем порог</b><div class="d">Вход через мессенджер, без логинов и отдельной регистрации. Сейчас MAX и Telegram, дальше — любой другой.</div></div></div>
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-users"/></svg></div><div><b>Создаём среду</b><div class="d">Чат участников и приглашение друга: можно прийти на дело не одному.</div></div></div>
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bolt"/></svg></div><div><b>Даём мотивацию</b><div class="d">Карма, уровни, достижения и сертификаты: видимый прогресс и признание.</div></div></div>
         </div>
@@ -477,7 +475,7 @@
       <div style="flex:1;display:flex;align-items:center;min-height:0">
         <div style="display:flex;gap:14px;width:100%">
           <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-bot"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Бот как точка входа</div><div class="muted" style="font-size:15px;line-height:1.45">Знакомит с сервисом, объясняет, как записаться, и открывает мини-приложение из того же чата.</div></div>
-          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-key"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Вход по MAX ID</div><div class="muted" style="font-size:15px;line-height:1.45">Отдельная регистрация, пароль и анкета не нужны. Вход одним действием.</div></div>
+          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-key"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Вход через мессенджер</div><div class="muted" style="font-size:15px;line-height:1.45">Отдельная регистрация, пароль и анкета не нужны. Вход одним действием из чата.</div></div>
           <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-link"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Ссылка и напоминания</div><div class="muted" style="font-size:15px;line-height:1.45">Ссылка открывает карточку события. Бот присылает напоминание.</div></div>
           <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-mail"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Приглашение друга</div><div class="muted" style="font-size:15px;line-height:1.45">Участник отправляет ссылку знакомому. Тот заходит и записывается на дело без новой анкеты.</div></div>
         </div>
@@ -496,7 +494,7 @@
         <div class="card" style="flex:1;padding:24px 26px;display:flex;flex-direction:column">
           <div class="shead">Волонтёры</div>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот в MAX</b><div class="d">Знакомит с сервисом, открывает мини-приложение и ведёт к первому событию.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот в мессенджере</b><div class="d">Знакомит с сервисом, открывает мини-приложение и ведёт к первому событию. Ставим в тот чат, где уже сидит аудитория.</div></div></div>
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b>Вузы</b><div class="d">Подтверждённые часы добра и цифровое портфолио для поступления.</div></div></div>
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-users"/></svg></div><div><b>Приглашение друга</b><div class="d">Из чата события можно позвать знакомого, регистрироваться заново не нужно.</div></div></div>
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-chat"/></svg></div><div><b>Истории волонтёров</b><div class="d">Публикации с мероприятий и живая лента.</div></div></div>
@@ -529,7 +527,7 @@
           <div style="font-family:var(--disp);font-weight:800;font-size:32px;line-height:1;margin:2px 0 8px">4,12<span style="font-size:14px;color:var(--muted);margin-left:6px">млн ₽</span></div>
           <div class="costbox">
             <div class="costhead"><span class="n">Команда</span><span class="v">3,90 млн</span></div>
-            <div class="costline"><span>Tech-lead · 350 тыс × 3 мес · архитектура, запуски, MAX</span><b>1,05 млн</b></div>
+            <div class="costline"><span>Tech-lead · 350 тыс × 3 мес · архитектура, запуски, мессенджеры</span><b>1,05 млн</b></div>
             <div class="costline"><span>Backend · 250 тыс × 3 мес · API, боты, база</span><b>750 тыс</b></div>
             <div class="costline"><span>Frontend · 200 тыс × 3 мес · мини-приложение, кабинет</span><b>600 тыс</b></div>
             <div class="costline"><span>Дизайнер · 200 тыс × 3 мес · интерфейс</span><b>600 тыс</b></div>
@@ -554,7 +552,7 @@
           <div style="font-family:var(--disp);font-weight:800;font-size:32px;line-height:1;margin:2px 0 8px">1,37<span style="font-size:14px;color:var(--muted);margin-left:6px">млн ₽/мес</span></div>
           <div class="costbox">
             <div class="costhead"><span class="n">Команда</span><span class="v">1,30 млн</span></div>
-            <div class="costline"><span>Tech-lead · запуски, MAX</span><b>350 тыс</b></div>
+            <div class="costline"><span>Tech-lead · запуски, мессенджеры</span><b>350 тыс</b></div>
             <div class="costline"><span>Backend · API, боты, база</span><b>250 тыс</b></div>
             <div class="costline"><span>Frontend · мини-приложение</span><b>200 тыс</b></div>
             <div class="costline"><span>Дизайнер · интерфейс</span><b>200 тыс</b></div>
@@ -595,17 +593,17 @@
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b style="font-size:16px">Обучение</b><div class="d" style="font-size:14.5px">Курсы, тесты и сертификаты в портфолио.</div></div></div>
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b style="font-size:16px">Поиск дел</b><div class="d" style="font-size:14.5px">Запрос своими словами в боте.</div></div></div>
             <div class="feat"><div class="ic"><svg class="ico"><use href="#i-building"/></svg></div><div><b style="font-size:16px">Кабинет организатора</b><div class="d" style="font-size:14.5px">События, отслеживание, аналитика.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-max"/></svg></div><div><b style="font-size:16px">Контур MAX</b><div class="d" style="font-size:14.5px">Бот и вход по MAX ID.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-chat"/></svg></div><div><b style="font-size:16px">Контур мессенджеров</b><div class="d" style="font-size:14.5px">Бот и вход в MAX и Telegram. Можно подключить любой другой.</div></div></div>
           </div>
         </div>
         <div class="card" style="flex:1.08;padding:18px 20px;display:flex;flex-direction:column;min-height:0">
           <div style="font-weight:800;font-size:16px;color:var(--ink2);margin-bottom:12px">План до запуска</div>
           <div style="display:flex;flex-direction:column;flex:1;justify-content:space-between">
             <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--green);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Сейчас · MVP готов</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Путь волонтёра и кабинет организатора представлены.</div></div></div>
-            <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--blue);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Сентябрь–октябрь · инфраструктура и MAX</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Перенос на Timeweb, собственный PostgreSQL, копии, хранилище и мониторинг. Бот, вход по MAX ID и мини-приложение на национальной платформе.</div></div></div>
+            <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--blue);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Сентябрь–октябрь · инфраструктура и мессенджеры</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Перенос на Timeweb, собственный PostgreSQL, копии, хранилище и мониторинг. Бот и мини-приложение в MAX и Telegram — дальше подключаем любой мессенджер.</div></div></div>
             <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--blue);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Октябрь–ноябрь · устойчивость</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Доработка API, кабинета организатора и поиска. Проверка нагрузки, исправление ошибок, подготовка резерва на инциденты.</div></div></div>
             <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--blue);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Ноябрь–декабрь · пилот</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Пробный запуск с организацией и правки по обратной связи.</div></div></div>
-            <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--coral);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Декабрь–январь · запуск в MAX</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Открытый запуск национального контура.</div></div></div>
+            <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--coral);flex:0 0 auto"></div><div style="width:2px;flex:1;background:var(--line);min-height:14px"></div></div><div style="padding-bottom:8px"><b style="font-size:15.5px">Декабрь–январь · открытый запуск</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Открытый запуск в мессенджерах, где уже есть аудитория.</div></div></div>
             <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:11px;height:11px;border-radius:50%;background:var(--ink2);flex:0 0 auto"></div></div><div><b style="font-size:15.5px">С января · сопровождение</b><div class="muted" style="font-size:14px;margin-top:3px;line-height:1.4">Разработка: расширение и поддержка. Инфраструктура: серверы, база, хранилище и мониторинг.</div></div></div>
           </div>
         </div>
@@ -614,16 +612,17 @@
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>13</div></div>
   </section>
 
-  <!-- ============ 13 · TEAM + CTA + QR ============ -->
+  <!-- ============ 13 · CTA + QR ============ -->
   <section class="slide" id="s14">
     <div class="pad" style="flex-direction:row;gap:46px;align-items:center">
       <div style="flex:1.1">
-        <div class="kicker"><span class="num">14</span> &nbsp;Команда</div>
+        <div class="kicker"><span class="num">14</span> &nbsp;Попробовать</div>
         <h1 class="title" style="margin-top:14px">Можно открыть и <span class="accent">попробовать</span></h1>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:28px">
-          <div style="display:flex;align-items:center;gap:12px"><img src="assets/img_KK.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 6px 16px -8px rgba(11,28,63,.5)"><div><b style="font-size:17px">Корнилов Кирилл</b><div class="muted" style="font-size:13px;font-weight:600">Tech-lead</div></div></div>
-          <div style="display:flex;align-items:center;gap:12px"><img src="assets/img_DM.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 6px 16px -8px rgba(11,28,63,.5)"><div><b style="font-size:17px">Данилов Михаил</b><div class="muted" style="font-size:13px;font-weight:600">Backend</div></div></div>
-          <div style="display:flex;align-items:center;gap:12px"><img src="assets/img_SK.jpg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 6px 16px -8px rgba(11,28,63,.5)"><div><b style="font-size:17px">Шутов Кирилл</b><div class="muted" style="font-size:13px;font-weight:600">Frontend</div></div></div>
+        <p class="sub" style="margin-top:16px;max-width:520px">Работает в MAX и Telegram. Тот же контур можно развернуть в любом мессенджере.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+          <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот и мини-приложение</b><div class="d">Точка входа — чат. Карта дел, запись и кабинет организатора уже внутри.</div></div></div>
+          <div class="feat"><div class="ic"><svg class="ico"><use href="#i-key"/></svg></div><div><b>Без отдельной регистрации</b><div class="d">Вход через аккаунт мессенджера, без логина, пароля и анкеты.</div></div></div>
+          <div class="feat"><div class="ic"><svg class="ico"><use href="#i-repeat"/></svg></div><div><b>Любая площадка</b><div class="d">Подключаем тот мессенджер, где живёт ваша аудитория.</div></div></div>
         </div>
       </div>
       <div style="flex:1;display:flex;justify-content:center">
