@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>MAX Добро — питч для государственного фонда</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,8 +117,9 @@
   .costhead .v{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink)}
 
   /* present mode */
-  body.present{overflow:hidden;height:100vh}
-  body.present .deck{display:block;padding:0;height:100vh}
+  html:has(body.present){overflow:hidden;width:100%;height:100%}
+  body.present{overflow:hidden;height:100vh;height:100dvh}
+  body.present .deck{display:block;padding:0;position:fixed;inset:0;overflow:hidden}
   body.present .slide{display:none;position:absolute;top:50%;left:50%;transform-origin:center;box-shadow:0 40px 90px -30px rgba(11,28,63,.6)}
   body.present .slide.active{display:block}
   .hint{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:rgba(11,28,63,.85);color:#fff;
@@ -160,6 +161,62 @@
     body.present .slide.active .floaty{animation:none!important;opacity:1!important}
     .grad{animation:none}
   }
+
+  /* Phone portrait: same slide content, full viewport, stacked. Desktop present mode never gets .mfit. */
+  body.present.mfit{background:var(--bg);height:100%;-webkit-text-size-adjust:100%}
+  body.present.mfit .slide.active{
+    display:flex!important;flex-direction:column;overflow:hidden;
+    border-radius:0;box-shadow:none;transform:none!important;
+  }
+  body.present.mfit .pad{
+    position:relative!important;inset:auto!important;flex:1 1 auto;min-height:0!important;
+    width:auto!important;height:auto!important;overflow-x:hidden;overflow-y:auto;
+    -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;
+    gap:14px!important;
+    padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left))!important;
+  }
+  body.present.mfit .pad > div,
+  body.present.mfit .pad .card,
+  body.present.mfit .pad .grid,
+  body.present.mfit .pad div[style*="flex"]:not([style*="width:2px"]){flex:0 0 auto!important;max-width:100%}
+  body.present.mfit .pad > div[style*="display:flex"]:not(:has(.phone)){flex-direction:column!important}
+  body.present.mfit .pad > div:has(.phone){flex-direction:row!important;justify-content:center!important;align-items:flex-start!important;gap:10px!important}
+  body.present.mfit .pad > div:has(.phone) > div{margin-top:0!important}
+  body.present.mfit .foot{
+    position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;
+    flex:0 0 auto;
+    padding:6px max(16px, env(safe-area-inset-right)) calc(34px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  body.present.mfit h1.title{font-size:clamp(26px, 7.4vw, 40px)!important}
+  body.present.mfit h1.big{font-size:clamp(34px, 10vw, 52px)!important}
+  body.present.mfit .sub{font-size:16px!important;max-width:none!important}
+  body.present.mfit .kicker{font-size:12px}
+  body.present.mfit .feat b{font-size:16px}
+  body.present.mfit .feat .d{font-size:14px}
+  body.present.mfit .grid{grid-template-columns:1fr!important}
+  body.present.mfit .grid > *{grid-column:1 / -1!important;min-width:0!important}
+  body.present.mfit .card{max-width:100%;overflow-wrap:break-word}
+  body.present.mfit .pad div[style*="gap:18px"]:has(img[alt*="QR"]){width:100%;gap:10px!important}
+  body.present.mfit .pad div[style*="gap:18px"]:has(img[alt*="QR"]) > .card{
+    flex:1 1 0!important;width:calc(50% - 8px)!important;max-width:calc(50% - 8px)!important;
+    min-width:0!important;padding:12px 8px!important}
+  body.present.mfit .card img{width:100%!important;height:auto!important;max-width:100%;aspect-ratio:1;object-fit:contain}
+  body.present.mfit .card img + div{font-size:11px!important;overflow-wrap:anywhere}
+  body.present.mfit #s1 .pad, body.present.mfit #s12 .pad{justify-content:center!important}
+  body.present.mfit .phone{width:min(42vw, 200px)!important;height:min(74vw, 360px)!important}
+  body.present.mfit .cmp{font-size:12px}
+  body.present.mfit .cmp th{font-size:11px;padding:8px 3px}
+  body.present.mfit .cmp td{padding:8px 3px;font-size:12px}
+  body.present.mfit .cmp td:first-child{font-size:12px;padding-left:8px;padding-right:6px}
+  body.present.mfit .cmp th:first-child{padding-left:8px}
+  body.present.mfit .yes{font-size:15px}
+  body.present.mfit .no, body.present.mfit .part{font-size:14px}
+  body.present.mfit .costline{flex-wrap:wrap;align-items:flex-start}
+  body.present.mfit .legend{flex-wrap:wrap;margin-bottom:4px}
+  body.present.mfit .nav{bottom:calc(8px + env(safe-area-inset-bottom))}
+  body.present.mfit .nav i{position:relative}
+  body.present.mfit .nav i::after{content:"";position:absolute;inset:-12px}
 </style>
 </head>
 <body>
@@ -631,7 +688,7 @@
 
     // progress dots
     const nav=document.createElement('div'); nav.className='nav';
-    slides.forEach((_,k)=>{ const d=document.createElement('i'); d.addEventListener('click',()=>{i=k;fit();}); nav.appendChild(d); });
+    slides.forEach((_,k)=>{ const d=document.createElement('i'); d.addEventListener('click',()=>{ if(k===i) return; i=k; const pad=slides[i].querySelector('.pad'); if(pad) pad.scrollTop=0; fit(); }); nav.appendChild(d); });
     document.body.appendChild(nav);
 
     // staggered reveal of the active slide's top-level blocks
@@ -649,31 +706,79 @@
       });
     }
 
-    function fit(){
-      const s=slides[i]; const sc=Math.min(window.innerWidth/1280, window.innerHeight/720);
-      slides.forEach(x=>x.classList.remove('active'));
-      s.classList.add('active');
-      s.style.transform=`translate(-50%,-50%) scale(${sc})`;
+    function stage(){
+      const vv=window.visualViewport;
+      return {w:vv?vv.width:window.innerWidth, h:vv?vv.height:window.innerHeight, top:vv?vv.offsetTop:0, left:vv?vv.offsetLeft:0};
+    }
+    function clearStage(el){
+      el.style.position=''; el.style.top=''; el.style.left=''; el.style.width=''; el.style.height=''; el.style.transform='';
+    }
+    // Portrait phones get a full-viewport stack. Wide and landscape viewports keep the 1280x720 scale.
+    function layout(){
+      const s=slides[i];
+      const box=stage();
+      const phone=box.w<900 && box.h>=box.w;
+      document.body.classList.toggle('mfit', phone);
+      if(!s.classList.contains('active')){
+        slides.forEach(x=>x.classList.remove('active'));
+        s.classList.add('active');
+      }
+      if(phone){
+        s.style.position='fixed';
+        s.style.top=box.top+'px';
+        s.style.left=box.left+'px';
+        s.style.width=box.w+'px';
+        s.style.height=box.h+'px';
+        s.style.transform='none';
+      }else{
+        clearStage(s);
+        const sc=Math.min(box.w/1280, box.h/720);
+        s.style.transform=`translate(-50%,-50%) scale(${sc})`;
+      }
       [...nav.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+    }
+    function fit(){
+      const s=slides[i];
+      slides.forEach(x=>{ if(x!==s) clearStage(x); });
+      layout();
       s.querySelectorAll('img[src*=".gif"]').forEach(img=>{
         const base=img.getAttribute('src').split('?')[0];
         img.setAttribute('src', base+'?r='+Date.now());
       });
       animate(s);
     }
-    function go(d){ const n=Math.max(0,Math.min(slides.length-1,i+d)); if(n!==i){ i=n; fit(); } }
+    function go(d){
+      const n=Math.max(0,Math.min(slides.length-1,i+d));
+      if(n!==i){
+        i=n;
+        const pad=slides[i].querySelector('.pad');
+        if(pad) pad.scrollTop=0;
+        fit();
+      }
+    }
 
     window.addEventListener('keydown',e=>{
       if(['ArrowRight',' ','Enter','PageDown'].includes(e.key)){e.preventDefault();go(1);}
       else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
       else if(e.key==='Home'){e.preventDefault();i=0;fit();}
       else if(e.key==='End'){e.preventDefault();i=slides.length-1;fit();}
-      else if(e.key==='Escape'){document.body.classList.toggle('present');if(document.body.classList.contains('present'))fit();else slides.forEach(x=>x.style.transform='');}
+      else if(e.key==='Escape'){
+        document.body.classList.toggle('present');
+        document.body.classList.remove('mfit');
+        if(document.body.classList.contains('present')) fit();
+        else slides.forEach(clearStage);
+      }
     });
-    // touch swipe
-    let tx=0; window.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
-    window.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>50) go(dx<0?1:-1);},{passive:true});
-    window.addEventListener('resize',()=>{if(document.body.classList.contains('present'))fit();});
+    // Horizontal swipe changes slides. Vertical movement scrolls the slide.
+    let tx=0, ty=0;
+    window.addEventListener('touchstart',e=>{tx=e.touches[0].clientX; ty=e.touches[0].clientY;},{passive:true});
+    window.addEventListener('touchend',e=>{
+      const dx=e.changedTouches[0].clientX-tx;
+      const dy=e.changedTouches[0].clientY-ty;
+      if(Math.abs(dx)>56 && Math.abs(dx)>Math.abs(dy)*1.4) go(dx<0?1:-1);
+    },{passive:true});
+    window.addEventListener('resize',()=>{if(document.body.classList.contains('present'))layout();});
+    if(window.visualViewport) window.visualViewport.addEventListener('resize',()=>{if(document.body.classList.contains('present'))layout();});
     fit();
   }
 </script>
