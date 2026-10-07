@@ -215,10 +215,10 @@
   body.present.mfit #s12 .feat b{font-size:14px}
   body.present.mfit #s12 .feat .d{font-size:12.5px}
 
-  /* s2: stats fill from the top, title wraps the full width */
+  /* s2: stats sit in the vertical middle, title wraps the full width */
   body.present.mfit #s2 .pad{
     overflow:hidden;display:grid!important;grid-template-columns:1fr 1fr;
-    align-content:start;gap:8px!important;
+    align-content:center;gap:8px!important;
   }
   body.present.mfit #s2 .pad > div[style*="display:flex"],
   body.present.mfit #s2 .pad > div[style*="display:flex"] > div,
@@ -242,21 +242,26 @@
   body.present.mfit #s2 .card [style*="gap:32px"]{gap:14px!important}
   body.present.mfit #s2 .card [style*="height:52px"]{height:28px!important}
 
-  /* s3: two-up problem cards */
-  body.present.mfit #s3 .pad{overflow:hidden;justify-content:flex-start!important}
-  body.present.mfit #s3 .grid{display:grid;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:6px!important;flex:1 1 auto!important;min-height:0;align-content:stretch;grid-auto-rows:1fr}
+  /* s3: compact two-up cards, centered in the viewport */
+  body.present.mfit #s3 .pad{overflow:hidden;justify-content:center!important;gap:12px!important}
+  body.present.mfit #s3 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:0!important}
+  body.present.mfit #s3 .grid{display:grid;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:0!important;flex:0 0 auto!important;align-content:start;grid-auto-rows:auto}
   body.present.mfit #s3 .grid > *{grid-column:auto!important;min-width:0!important}
-  body.present.mfit #s3 .card{padding:10px!important;gap:8px!important}
-  body.present.mfit #s3 .card > div > div:first-child{font-size:14px!important;margin-bottom:2px!important;line-height:1.2}
-  body.present.mfit #s3 .muted{font-size:12px!important;line-height:1.28!important;color:var(--ink2)}
-  body.present.mfit #s3 .src{font-size:11px!important;margin-top:4px!important}
-  body.present.mfit #s3 .ico-lg{width:20px;height:20px}
+  body.present.mfit #s3 .card{padding:8px 10px!important;gap:6px!important}
+  body.present.mfit #s3 .card > div > div:first-child{font-size:13px!important;margin-bottom:2px!important;line-height:1.2}
+  body.present.mfit #s3 .muted{font-size:11px!important;line-height:1.28!important;color:var(--ink2)}
+  body.present.mfit #s3 .src{font-size:11px!important;margin-top:0!important;flex:0 0 auto}
+  body.present.mfit #s3 .ico-lg{width:18px;height:18px}
 
-  /* s4–s7: copy on top, phones grow into leftover space */
+  /* s4–s7: copy breathes, phones sit on the leftover and fill its width */
   body.present.mfit #s4 .pad,
   body.present.mfit #s5 .pad,
   body.present.mfit #s6 .pad,
-  body.present.mfit #s7 .pad{overflow:hidden;gap:8px!important}
+  body.present.mfit #s7 .pad{
+    overflow:hidden;gap:12px!important;justify-content:space-between!important;
+    padding-left:max(10px, env(safe-area-inset-left))!important;
+    padding-right:max(10px, env(safe-area-inset-right))!important;
+  }
   body.present.mfit #s4 .copy,
   body.present.mfit #s5 .copy,
   body.present.mfit #s6 .copy,
@@ -264,109 +269,109 @@
   body.present.mfit #s4 h1.title,
   body.present.mfit #s5 h1.title,
   body.present.mfit #s6 h1.title,
-  body.present.mfit #s7 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:4px!important}
+  body.present.mfit #s7 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:6px!important}
   body.present.mfit #s4 .sub,
   body.present.mfit #s5 .sub,
   body.present.mfit #s6 .sub,
-  body.present.mfit #s7 .sub{font-size:13.5px!important;line-height:1.3!important;margin-top:4px!important}
+  body.present.mfit #s7 .sub{font-size:14px!important;line-height:1.35!important;margin-top:6px!important}
   body.present.mfit #s4 .feat,
   body.present.mfit #s5 .feat,
   body.present.mfit #s6 .feat,
-  body.present.mfit #s7 .feat{gap:8px}
+  body.present.mfit #s7 .feat{gap:10px}
   body.present.mfit #s4 .feat b,
   body.present.mfit #s5 .feat b,
   body.present.mfit #s6 .feat b,
-  body.present.mfit #s7 .feat b{font-size:14.5px}
+  body.present.mfit #s7 .feat b{font-size:15px}
   body.present.mfit #s4 .feat .d,
   body.present.mfit #s5 .feat .d,
   body.present.mfit #s6 .feat .d,
-  body.present.mfit #s7 .feat .d{font-size:12.5px;line-height:1.28}
-  body.present.mfit .copy > div[style*="flex-direction:column"]{gap:8px!important;margin-top:8px!important}
+  body.present.mfit #s7 .feat .d{font-size:13px;line-height:1.32}
+  body.present.mfit .copy > div[style*="flex-direction:column"]{gap:12px!important;margin-top:12px!important}
   body.present.mfit .phones{
-    flex:1 1 auto!important;min-height:0!important;max-width:100%;
+    flex:1 1 auto!important;min-height:0!important;width:100%;max-width:100%;
     display:flex!important;flex-direction:row!important;
-    justify-content:center!important;align-items:flex-start!important;gap:8px!important;
-    padding-top:6px;
+    justify-content:center!important;align-items:flex-end!important;gap:8px!important;
+    padding-top:4px;
   }
   body.present.mfit .phones > div{
     margin-top:0!important;display:flex!important;flex-direction:column;
-    height:auto;max-height:100%;justify-content:flex-start;align-items:center;
-    flex:0 0 auto;
+    height:100%;max-height:100%;justify-content:flex-end;align-items:center;
+    flex:1 1 0;min-width:0;max-width:196px;
   }
   body.present.mfit .phones .phone{
-    width:min(44vw, 172px)!important;
+    width:100%!important;
     height:auto!important;
     aspect-ratio:232 / 376;
-    max-height:calc(100% - 2px);
     flex:0 0 auto!important;
   }
+  body.present.mfit #s7 .phones .phone{aspect-ratio:212 / 452}
   body.present.mfit .ph-cap{display:none}
 
-  /* s8: each feature becomes a labeled comparison card */
-  body.present.mfit #s8 .pad{overflow:hidden;gap:8px!important}
-  body.present.mfit #s8 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:4px!important}
-  body.present.mfit #s8 .card{flex:1 1 auto!important;min-height:0;display:flex!important;flex-direction:column;overflow:hidden}
-  body.present.mfit #s8 .cmp{flex:1;height:100%;display:block}
+  /* s8: labeled comparison cards, content-sized so the last row stays in view */
+  body.present.mfit #s8 .pad{overflow:hidden;gap:6px!important;padding-bottom:10px!important;justify-content:center!important}
+  body.present.mfit #s8 h1.title{font-size:clamp(20px, 5.6vw, 26px)!important;margin-top:2px!important}
+  body.present.mfit #s8 .card{flex:0 1 auto!important;min-height:0;display:flex!important;flex-direction:column;overflow:hidden;margin-top:4px!important}
+  body.present.mfit #s8 .cmp{flex:0 0 auto;height:auto;display:block}
   body.present.mfit #s8 thead{display:none}
-  body.present.mfit #s8 tbody{display:flex;flex-direction:column;height:100%;min-height:0}
+  body.present.mfit #s8 tbody{display:flex;flex-direction:column;height:auto;min-height:0}
   body.present.mfit #s8 tr{
     display:flex;flex-wrap:wrap;align-items:center;
-    flex:1 1 0;min-height:0;padding:8px 10px;border-top:1px solid var(--line);
+    flex:0 0 auto;min-height:0;padding:5px 8px;border-top:1px solid var(--line);
   }
   body.present.mfit #s8 tr:first-child{border-top:none}
   body.present.mfit #s8 td{
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:2px;padding:4px 2px 0!important;flex:1 1 0;min-width:0;border:0!important;background:transparent!important;
-    text-align:center;font-size:18px;
+    gap:1px;padding:2px 1px 0!important;flex:1 1 0;min-width:0;border:0!important;background:transparent!important;
+    text-align:center;font-size:16px;
   }
   body.present.mfit #s8 td:first-child{
     flex:0 0 100%;width:100%;align-items:flex-start;text-align:left;
-    padding:0 0 4px!important;font-size:13px!important;
+    padding:0 0 2px!important;font-size:12px!important;
   }
   body.present.mfit #s8 td:not(:first-child)::before{
-    content:attr(data-col);font-size:9px;font-weight:700;color:var(--ink2);
-    letter-spacing:.01em;line-height:1.1;text-align:center;
+    content:attr(data-col);font-size:8px;font-weight:700;color:var(--ink2);
+    letter-spacing:.01em;line-height:1.15;text-align:center;
   }
   body.present.mfit #s8 td.us{border-radius:8px;background:rgba(0,122,255,.10)!important}
-  body.present.mfit #s8 .yes{font-size:18px}
-  body.present.mfit #s8 .no, body.present.mfit #s8 .part{font-size:16px}
-  body.present.mfit #s8 .legend{align-self:center;gap:12px;font-size:12px;margin-top:4px}
+  body.present.mfit #s8 .yes{font-size:16px}
+  body.present.mfit #s8 .no, body.present.mfit #s8 .part{font-size:14px}
+  body.present.mfit #s8 .legend{align-self:center;gap:12px;font-size:11px;margin-top:2px;flex:0 0 auto}
 
-  /* s9 / s11: two columns, compact type, no inner scroll */
+  /* s9 / s11: two columns, tighter type so last items stay above chrome */
   body.present.mfit #s9 .pad,
-  body.present.mfit #s11 .pad{overflow:hidden;gap:6px!important}
+  body.present.mfit #s11 .pad{overflow:hidden;gap:4px!important;padding-bottom:10px!important;justify-content:center!important}
   body.present.mfit #s9 h1.title,
-  body.present.mfit #s11 h1.title{font-size:clamp(20px, 5.6vw, 26px)!important;margin-top:2px!important}
+  body.present.mfit #s11 h1.title{font-size:clamp(18px, 5.2vw, 24px)!important;margin-top:0!important}
   body.present.mfit .split{
-    display:flex!important;flex-direction:row!important;gap:8px!important;
-    flex:1 1 auto!important;min-height:0!important;margin-top:6px!important;align-items:stretch!important;
+    display:flex!important;flex-direction:row!important;gap:6px!important;
+    flex:0 1 auto!important;min-height:0!important;margin-top:4px!important;align-items:stretch!important;
   }
   body.present.mfit .split > .card{
     flex:1 1 0!important;min-width:0!important;min-height:0!important;
-    padding:10px 10px!important;overflow:hidden;
+    padding:8px 8px!important;overflow:hidden;
   }
-  body.present.mfit #s9 .shead{font-size:11px}
-  body.present.mfit #s9 .feat, body.present.mfit #s11 .feat{gap:7px}
-  body.present.mfit #s9 .feat b, body.present.mfit #s11 .feat b{font-size:12.5px;line-height:1.2}
-  body.present.mfit #s9 .feat .d, body.present.mfit #s11 .feat .d{font-size:11px;line-height:1.25;margin-top:1px;color:var(--ink2)}
-  body.present.mfit #s9 .ico, body.present.mfit #s11 .ico{width:16px;height:16px}
+  body.present.mfit #s9 .shead{font-size:10px}
+  body.present.mfit #s9 .feat, body.present.mfit #s11 .feat{gap:5px}
+  body.present.mfit #s9 .feat b, body.present.mfit #s11 .feat b{font-size:11.5px;line-height:1.15}
+  body.present.mfit #s9 .feat .d, body.present.mfit #s11 .feat .d{font-size:10px;line-height:1.22;margin-top:0;color:var(--ink2)}
+  body.present.mfit #s9 .ico, body.present.mfit #s11 .ico{width:14px;height:14px}
   body.present.mfit #s9 .card > div[style*="flex-direction:column"],
-  body.present.mfit #s11 .card > div[style*="flex-direction:column"]{gap:7px!important;margin-top:8px!important}
-  body.present.mfit #s11 .card > div:first-child{font-size:13px!important;margin-bottom:0!important}
-  body.present.mfit #s11 .split b{font-size:12px!important;line-height:1.2}
-  body.present.mfit #s11 .split .muted{font-size:10.5px!important;margin-top:1px!important;line-height:1.25!important;color:var(--ink2)}
-  body.present.mfit #s11 .split [style*="padding-bottom"]{padding-bottom:4px!important}
-  body.present.mfit #s11 .split [style*="min-height:14px"]{min-height:6px!important}
-  body.present.mfit #s11 .feat b{font-size:12.5px!important}
-  body.present.mfit #s11 .feat .d{font-size:11px!important}
+  body.present.mfit #s11 .card > div[style*="flex-direction:column"]{gap:5px!important;margin-top:6px!important}
+  body.present.mfit #s11 .card > div:first-child{font-size:12px!important;margin-bottom:0!important}
+  body.present.mfit #s11 .split b{font-size:11px!important;line-height:1.15}
+  body.present.mfit #s11 .split .muted{font-size:10px!important;margin-top:0!important;line-height:1.2!important;color:var(--ink2)}
+  body.present.mfit #s11 .split [style*="padding-bottom"]{padding-bottom:3px!important}
+  body.present.mfit #s11 .split [style*="min-height:14px"]{min-height:4px!important}
+  body.present.mfit #s11 .feat b{font-size:11.5px!important}
+  body.present.mfit #s11 .feat .d{font-size:10px!important}
 
-  /* s10: stacked budget cards, one-line cost rows */
-  body.present.mfit #s10 .pad{overflow:hidden;gap:6px!important}
-  body.present.mfit #s10 h1.title{font-size:clamp(20px, 5.4vw, 24px)!important;margin-top:2px!important}
-  body.present.mfit #s10 .sub{font-size:13px!important;margin-top:2px!important}
-  body.present.mfit #s10 .split{flex-direction:column!important;gap:6px!important;margin-top:4px!important;justify-content:flex-start!important}
-  body.present.mfit #s10 .split > .card{flex:0 1 auto!important;padding:7px 9px!important;overflow:visible}
-  body.present.mfit #s10 .split > .card > div[style*="font-size:32px"]{font-size:20px!important;margin:0 0 4px!important}
+  /* s10: stacked budget cards, centered, slightly larger header */
+  body.present.mfit #s10 .pad{overflow:hidden;gap:8px!important;justify-content:center!important}
+  body.present.mfit #s10 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:4px!important}
+  body.present.mfit #s10 .sub{font-size:14px!important;margin-top:4px!important}
+  body.present.mfit #s10 .split{flex:0 0 auto!important;flex-direction:column!important;gap:8px!important;margin-top:6px!important;justify-content:center!important}
+  body.present.mfit #s10 .split > .card{flex:0 0 auto!important;padding:8px 10px!important;overflow:visible}
+  body.present.mfit #s10 .split > .card > div[style*="font-size:32px"]{font-size:24px!important;margin:0 0 6px!important}
   body.present.mfit #s10 .costbox{padding:4px 7px;margin-bottom:4px}
   body.present.mfit #s10 .costhead{margin-bottom:1px}
   body.present.mfit #s10 .costhead .n{font-size:11px}
@@ -651,27 +656,27 @@
           <tbody>
             <tr>
               <td><b>Работает в мессенджере</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Вход без анкеты</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="part" data-col="Госуслуги">±</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="no" data-col="Добро.рф">—</td><td class="part" data-col="Госуслуги">±</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Мотивация и рейтинг</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="part" data-col="Добро.рф">±</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="part" data-col="Добро.рф">±</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Обучение и сертификаты</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="part" data-col="Фонды">±</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="part" data-col="Фонды">±</td>
             </tr>
             <tr>
               <td><b>Кабинет организатора</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="part" data-col="Госуслуги">±</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="part" data-col="Госуслуги">±</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Поиск дел своими словами</b></td>
-              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
+              <td class="yes us" data-col="MAX Добро">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
           </tbody>
         </table>
