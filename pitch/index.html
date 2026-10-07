@@ -72,6 +72,7 @@
   .phone{position:relative;border-radius:26px;background:#0B0F1A;padding:6px;box-shadow:0 30px 50px -24px rgba(11,28,63,.6);flex:0 0 auto}
   .phone .screen{border-radius:20px;overflow:hidden;background:#000;width:100%;height:100%}
   .phone img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .phone img[src*=".gif"]{object-fit:contain;background:#fff}
   .phone .notch{display:none}
 
   .stat .n{font-family:var(--disp);font-weight:800;line-height:1}
@@ -333,8 +334,8 @@
         </div>
       </div>
       <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:206px;height:440px"><div class="screen"><img src="assets/img_map.png" alt=""></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карта событий</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:194px;height:414px"><div class="screen"><img src="assets/img_social_chat.png" alt=""></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Чат участников</div></div>
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_map.gif" alt="Карта событий"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карта событий</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_event.gif" alt="Карточка события"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карточка события</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>04</div></div>
@@ -354,8 +355,8 @@
         </div>
       </div>
       <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:206px;height:440px"><div class="screen"><img src="assets/img_gamification.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карма и магазин</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:194px;height:414px"><div class="screen"><img src="assets/img_leaderboard.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Таблица лидеров</div></div>
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_shop.gif" alt="Магазин наград"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карма и магазин</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_leaderboard.gif" alt="Таблица лидеров"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Таблица лидеров</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>05</div></div>
@@ -374,8 +375,8 @@
         </div>
       </div>
       <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:206px;height:440px"><div class="screen"><img src="assets/img_education.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мини-курс</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:194px;height:414px"><div class="screen"><img src="assets/img_education_result.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Сертификат</div></div>
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_course.gif" alt="Мини-курс"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мини-курс</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_certificate.gif" alt="Сертификат"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Сертификат</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>06</div></div>
@@ -456,57 +457,41 @@
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>08</div></div>
   </section>
 
-  <!-- ============ 9 · MAX DISTRIBUTION / ADVANTAGE ============ -->
+  <!-- ============ 9 · GTM / MARKETING ============ -->
   <section class="slide" id="s9">
     <div class="pad">
-      <div class="kicker"><span class="num">09</span> &nbsp;Почему внутри мессенджера</div>
-      <h1 class="title" style="margin-top:12px">Бесшовно и в одном месте</h1>
-      <p class="sub" style="margin-top:12px;max-width:900px">Бот, мини-приложение, вход и пуши живут в мессенджере.</p>
-      <div style="flex:1;display:flex;align-items:center;min-height:0">
-        <div style="display:flex;gap:14px;width:100%">
-          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-bot"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Бот как точка входа</div><div class="muted" style="font-size:15px;line-height:1.45">Знакомит с сервисом, объясняет, как записаться, и открывает мини-приложение из того же чата.</div></div>
-          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-key"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Вход через мессенджер</div><div class="muted" style="font-size:15px;line-height:1.45">Отдельная регистрация, пароль и анкета не нужны. Вход одним действием из чата.</div></div>
-          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-link"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Ссылка и напоминания</div><div class="muted" style="font-size:15px;line-height:1.45">Ссылка открывает карточку события. Бот присылает напоминание.</div></div>
-          <div class="card" style="flex:1;padding:16px 16px"><svg class="ico ico-lg"><use href="#i-mail"/></svg><div style="font-weight:800;font-size:17px;margin:10px 0 6px">Приглашение друга</div><div class="muted" style="font-size:15px;line-height:1.45">Участник отправляет ссылку знакомому. Тот заходит и записывается на дело без новой анкеты.</div></div>
+      <div class="kicker"><span class="num">09</span> &nbsp;Привлечение</div>
+      <h1 class="title" style="margin-top:10px">Привлечение волонтёров<br>и <span class="accent">организаций</span></h1>
+      <div style="display:flex;gap:18px;margin-top:18px;flex:1;min-height:0">
+        <div class="card" style="flex:1;padding:20px 22px;display:flex;flex-direction:column;min-height:0">
+          <div class="shead">Волонтёры</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;flex:1;justify-content:space-between">
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот и вход без анкеты</b><div class="d">Знакомит с сервисом и открывает мини-приложение из чата. Пароль и отдельная анкета не нужны.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-link"/></svg></div><div><b>Ссылка и напоминания</b><div class="d">Ссылка открывает карточку события. Бот присылает напоминание.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b>Вузы</b><div class="d">Подтверждённые часы добра и цифровое портфолио для поступления.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-users"/></svg></div><div><b>Приглашение друга</b><div class="d">Из чата события можно позвать знакомого, регистрироваться заново не нужно.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-chat"/></svg></div><div><b>Истории волонтёров</b><div class="d">Публикации с мероприятий и живая лента.</div></div></div>
+          </div>
+        </div>
+        <div class="card" style="flex:1;padding:20px 22px;display:flex;flex-direction:column;min-height:0">
+          <div class="shead coral">Организации и фонды</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;flex:1;justify-content:space-between">
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-building"/></svg></div><div><b>Региональные программы</b><div class="d">События, учёт часов и отчётность для организаторов в регионе.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-calendar"/></svg></div><div><b>Кабинет организатора</b><div class="d">Создание мероприятий, заявки, отслеживание и начисление часов.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b>Курс к событию</b><div class="d">К мероприятию можно привязать обучение и сертификат — на площадку приходят подготовленные люди.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-repeat"/></svg></div><div><b>Подписчики фонда</b><div class="d">Волонтёры подписываются на организацию и видят новые дела без отдельных рассылок.</div></div></div>
+            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-book"/></svg></div><div><b>Совместный учёт</b><div class="d">Волонтёрская книжка и сертификаты в одной системе.</div></div></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>09</div></div>
   </section>
 
-  <!-- ============ 10 · GTM / MARKETING ============ -->
+  <!-- ============ 10 · ECONOMICS ============ -->
   <section class="slide" id="s10">
     <div class="pad">
-      <div class="kicker"><span class="num">10</span> &nbsp;Привлечение</div>
-      <h1 class="title" style="margin-top:10px">Привлечение волонтёров<br>и <span class="accent">организаций</span></h1>
-      <div style="display:flex;gap:18px;margin-top:22px;flex:1">
-        <div class="card" style="flex:1;padding:24px 26px;display:flex;flex-direction:column">
-          <div class="shead">Волонтёры</div>
-          <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот в мессенджере</b><div class="d">Знакомит с сервисом, открывает мини-приложение и ведёт к первому событию.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b>Вузы</b><div class="d">Подтверждённые часы добра и цифровое портфолио для поступления.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-users"/></svg></div><div><b>Приглашение друга</b><div class="d">Из чата события можно позвать знакомого, регистрироваться заново не нужно.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-chat"/></svg></div><div><b>Истории волонтёров</b><div class="d">Публикации с мероприятий и живая лента.</div></div></div>
-          </div>
-        </div>
-        <div class="card" style="flex:1;padding:24px 26px;display:flex;flex-direction:column">
-          <div class="shead coral">Организации и фонды</div>
-          <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-building"/></svg></div><div><b>Региональные программы</b><div class="d">События, учёт часов и отчётность для организаторов в регионе.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-calendar"/></svg></div><div><b>Кабинет организатора</b><div class="d">Создание мероприятий, заявки, отслеживание и начисление часов.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-book"/></svg></div><div><b>Совместный учёт</b><div class="d">Волонтёрская книжка и сертификаты в одной системе.</div></div></div>
-            <div class="feat"><div class="ic"><svg class="ico"><use href="#i-building"/></svg></div><div><b>Городские инициативы</b><div class="d">Размещение дел фондов и НКО.</div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>10</div></div>
-  </section>
-
-  <!-- ============ 11 · ECONOMICS ============ -->
-  <section class="slide" id="s11">
-    <div class="pad">
-      <div class="kicker"><span class="num">11</span> &nbsp;Расходы</div>
+      <div class="kicker"><span class="num">10</span> &nbsp;Расходы</div>
       <h1 class="title" style="margin-top:6px;font-size:32px">Доработка за осень, потом <span class="accent">поддержка</span></h1>
       <p class="sub" style="margin-top:4px;font-size:15px;max-width:940px">Смета на доработку готового MVP осенью 2026 и ежемесячное сопровождение после запуска.</p>
       <div style="display:flex;gap:12px;margin-top:10px;flex:1;min-height:0;align-items:stretch">
@@ -563,13 +548,13 @@
         </div>
       </div>
     </div>
-    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>11</div></div>
+    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>10</div></div>
   </section>
 
-  <!-- ============ 12 · READINESS + ROADMAP ============ -->
-  <section class="slide" id="s12">
+  <!-- ============ 11 · READINESS + ROADMAP ============ -->
+  <section class="slide" id="s11">
     <div class="pad">
-      <div class="kicker"><span class="num">12</span> &nbsp;Готовность и план</div>
+      <div class="kicker"><span class="num">11</span> &nbsp;Готовность и план</div>
       <h1 class="title" style="margin-top:8px">Что уже есть и <span class="green">что планируем</span></h1>
       <div style="display:flex;gap:16px;margin-top:14px;flex:1;min-height:0;align-items:stretch">
         <div class="card" style="flex:.92;padding:18px 20px;display:flex;flex-direction:column;min-height:0">
@@ -596,14 +581,14 @@
         </div>
       </div>
     </div>
-    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>12</div></div>
+    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>11</div></div>
   </section>
 
-  <!-- ============ 13 · CTA + QR ============ -->
-  <section class="slide" id="s13">
+  <!-- ============ 12 · CTA + QR ============ -->
+  <section class="slide" id="s12">
     <div class="pad" style="flex-direction:row;gap:46px;align-items:center">
       <div style="flex:1.1">
-        <div class="kicker"><span class="num">13</span> &nbsp;Попробовать</div>
+        <div class="kicker"><span class="num">12</span> &nbsp;Попробовать</div>
         <h1 class="title" style="margin-top:14px">Можно открыть и <span class="accent">попробовать</span></h1>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-bot"/></svg></div><div><b>Бот и мини-приложение</b><div class="d">Точка входа — чат. Карта дел, запись и кабинет организатора уже внутри.</div></div></div>
@@ -628,7 +613,7 @@
         </div>
       </div>
     </div>
-    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>13</div></div>
+    <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>12</div></div>
   </section>
 
 </div>
@@ -670,6 +655,10 @@
       s.classList.add('active');
       s.style.transform=`translate(-50%,-50%) scale(${sc})`;
       [...nav.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+      s.querySelectorAll('img[src*=".gif"]').forEach(img=>{
+        const base=img.getAttribute('src').split('?')[0];
+        img.setAttribute('src', base+'?r='+Date.now());
+      });
       animate(s);
     }
     function go(d){ const n=Math.max(0,Math.min(slides.length-1,i+d)); if(n!==i){ i=n; fit(); } }
