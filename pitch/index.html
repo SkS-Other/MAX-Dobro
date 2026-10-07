@@ -217,6 +217,108 @@
   body.present.mfit .nav{bottom:calc(8px + env(safe-area-inset-bottom))}
   body.present.mfit .nav i{position:relative}
   body.present.mfit .nav i::after{content:"";position:absolute;inset:-12px}
+
+  /* Slides 2–7 fit the portrait screen without scrolling. Desktop is untouched. */
+  body.present.mfit #s2 .pad,
+  body.present.mfit #s3 .pad,
+  body.present.mfit #s4 .pad,
+  body.present.mfit #s5 .pad,
+  body.present.mfit #s6 .pad,
+  body.present.mfit #s7 .pad{
+    overflow:hidden;gap:8px!important;
+    padding-top:max(12px, env(safe-area-inset-top))!important;
+    padding-bottom:2px!important;
+  }
+  body.present.mfit #s2 h1.title,
+  body.present.mfit #s3 h1.title,
+  body.present.mfit #s4 h1.title,
+  body.present.mfit #s5 h1.title,
+  body.present.mfit #s6 h1.title,
+  body.present.mfit #s7 h1.title{font-size:clamp(20px, 5.6vw, 26px)!important;margin-top:2px!important;line-height:1.12!important}
+  body.present.mfit #s2 .kicker,
+  body.present.mfit #s3 .kicker,
+  body.present.mfit #s4 .kicker,
+  body.present.mfit #s5 .kicker,
+  body.present.mfit #s6 .kicker,
+  body.present.mfit #s7 .kicker{font-size:11px}
+
+  body.present.mfit #s2 .pad{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;gap:7px!important}
+  body.present.mfit #s2 .pad > div[style*="display:flex"],
+  body.present.mfit #s2 .pad > div[style*="display:flex"] > div,
+  body.present.mfit #s2 .grid,
+  body.present.mfit #s2 div[style*="grid-template-columns"]{display:contents!important}
+  body.present.mfit #s2 .kicker,
+  body.present.mfit #s2 h1.title,
+  body.present.mfit #s2 .src,
+  body.present.mfit #s2 .pad > div > div:first-child > div:first-child,
+  body.present.mfit #s2 .pad > div > div:first-child > .card,
+  body.present.mfit #s2 .grid > .card:last-child{grid-column:1 / -1}
+  body.present.mfit #s2 .grid > *{grid-column:auto!important}
+  body.present.mfit #s2 .grid > .card:last-child{grid-column:1 / -1!important}
+  body.present.mfit #s2 .src{order:20;font-size:11px!important;margin:0!important}
+  body.present.mfit #s2 .card{padding:8px 10px!important}
+  body.present.mfit #s2 .card .n{font-size:26px!important;line-height:1!important}
+  body.present.mfit #s2 .card div{font-size:12px!important;line-height:1.25!important}
+  body.present.mfit #s2 .card .n{font-size:26px!important}
+  body.present.mfit #s2 .card [style*="margin-top"]{margin-top:4px!important}
+  body.present.mfit #s2 .card [style*="gap:22px"],
+  body.present.mfit #s2 .card [style*="gap:32px"]{gap:14px!important}
+  body.present.mfit #s2 .card [style*="height:52px"]{height:28px!important}
+
+  body.present.mfit #s3 .pad{justify-content:center!important}
+  body.present.mfit #s3 .grid{grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:4px!important}
+  body.present.mfit #s3 .grid > *{grid-column:auto!important;min-width:0!important}
+  body.present.mfit #s3 .card{padding:10px!important;gap:8px!important}
+  body.present.mfit #s3 .card > div > div:first-child{font-size:14px!important;margin-bottom:2px!important;line-height:1.2}
+  body.present.mfit #s3 .muted{font-size:12px!important;line-height:1.28!important}
+  body.present.mfit #s3 .src{font-size:11px!important;margin-top:2px!important}
+  body.present.mfit #s3 .ico-lg{width:20px;height:20px}
+
+  body.present.mfit #s4 .sub,
+  body.present.mfit #s5 .sub,
+  body.present.mfit #s6 .sub,
+  body.present.mfit #s7 .sub{font-size:13.5px!important;line-height:1.3!important;margin-top:4px!important}
+  body.present.mfit #s4 .feat,
+  body.present.mfit #s5 .feat,
+  body.present.mfit #s6 .feat,
+  body.present.mfit #s7 .feat{gap:8px}
+  body.present.mfit #s4 .feat b,
+  body.present.mfit #s5 .feat b,
+  body.present.mfit #s6 .feat b,
+  body.present.mfit #s7 .feat b{font-size:14.5px}
+  body.present.mfit #s4 .feat .d,
+  body.present.mfit #s5 .feat .d,
+  body.present.mfit #s6 .feat .d,
+  body.present.mfit #s7 .feat .d{font-size:12.5px;line-height:1.28}
+  body.present.mfit #s4 .pad div[style*="flex-direction:column"],
+  body.present.mfit #s5 .pad div[style*="flex-direction:column"],
+  body.present.mfit #s6 .pad div[style*="flex-direction:column"],
+  body.present.mfit #s7 .pad div[style*="flex-direction:column"]{gap:6px!important;margin-top:6px!important}
+  body.present.mfit #s4 .pad > div:has(.phone),
+  body.present.mfit #s5 .pad > div:has(.phone),
+  body.present.mfit #s6 .pad > div:has(.phone),
+  body.present.mfit #s7 .pad > div:has(.phone){
+    flex:1 1 auto!important;min-height:0!important;align-items:flex-end!important;gap:8px!important;
+  }
+  body.present.mfit #s4 .pad > div:has(.phone) > div,
+  body.present.mfit #s5 .pad > div:has(.phone) > div,
+  body.present.mfit #s6 .pad > div:has(.phone) > div,
+  body.present.mfit #s7 .pad > div:has(.phone) > div{
+    display:flex!important;flex-direction:column;height:100%;min-height:0;justify-content:flex-end;align-items:center;
+  }
+  body.present.mfit #s4 .phone,
+  body.present.mfit #s5 .phone,
+  body.present.mfit #s6 .phone,
+  body.present.mfit #s7 .phone{
+    width:min(34vw, 132px)!important;
+    height:min(46vw, 210px)!important;
+    max-height:100%;
+    flex:0 1 auto!important;
+  }
+  body.present.mfit #s4 .pad > div:has(.phone) > div > div,
+  body.present.mfit #s5 .pad > div:has(.phone) > div > div,
+  body.present.mfit #s6 .pad > div:has(.phone) > div > div,
+  body.present.mfit #s7 .pad > div:has(.phone) > div > div{margin-top:4px!important;font-size:11px!important}
 </style>
 </head>
 <body>
