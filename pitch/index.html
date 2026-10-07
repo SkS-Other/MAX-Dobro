@@ -117,9 +117,8 @@
   .costhead .v{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink)}
 
   /* present mode */
-  html:has(body.present){overflow:hidden;width:100%;height:100%}
-  body.present{overflow:hidden;height:100vh;height:100dvh}
-  body.present .deck{display:block;padding:0;position:fixed;inset:0;overflow:hidden}
+  body.present{overflow:hidden;height:100vh}
+  body.present .deck{display:block;padding:0;height:100vh}
   body.present .slide{display:none;position:absolute;top:50%;left:50%;transform-origin:center;box-shadow:0 40px 90px -30px rgba(11,28,63,.6)}
   body.present .slide.active{display:block}
   .hint{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:rgba(11,28,63,.85);color:#fff;
@@ -162,7 +161,13 @@
     .grad{animation:none}
   }
 
-  /* Phone portrait: same slide content, full viewport, stacked. Desktop present mode never gets .mfit. */
+  /* QR deep links — desktop and mobile */
+  .qr-link{display:block;color:inherit;text-decoration:none;border-radius:12px}
+  .qr-link:hover .qr-url{text-decoration:underline;text-underline-offset:3px}
+  .qr-link:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+  .qr-url{color:var(--blue);font-weight:800}
+
+  /* ===== mobile present: full-viewport stack, desktop 1280×720 untouched ===== */
   body.present.mfit{background:var(--bg);height:100%;-webkit-text-size-adjust:100%}
   body.present.mfit .slide.active{
     display:flex!important;flex-direction:column;overflow:hidden;
@@ -173,76 +178,48 @@
     width:auto!important;height:auto!important;overflow-x:hidden;overflow-y:auto;
     -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
     flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;
-    gap:14px!important;
-    padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left))!important;
+    gap:10px!important;
+    padding:max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(14px, env(safe-area-inset-left))!important;
   }
-  body.present.mfit .pad > div,
-  body.present.mfit .pad .card,
-  body.present.mfit .pad .grid,
-  body.present.mfit .pad div[style*="flex"]:not([style*="width:2px"]){flex:0 0 auto!important;max-width:100%}
-  body.present.mfit .pad > div[style*="display:flex"]:not(:has(.phone)){flex-direction:column!important}
-  body.present.mfit .pad > div:has(.phone){flex-direction:row!important;justify-content:center!important;align-items:flex-start!important;gap:10px!important}
-  body.present.mfit .pad > div:has(.phone) > div{margin-top:0!important}
+  body.present.mfit .pad > div{max-width:100%}
   body.present.mfit .foot{
     position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;
     flex:0 0 auto;
-    padding:6px max(16px, env(safe-area-inset-right)) calc(34px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    padding:4px max(14px, env(safe-area-inset-right)) calc(32px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
   }
-  body.present.mfit h1.title{font-size:clamp(26px, 7.4vw, 40px)!important}
-  body.present.mfit h1.big{font-size:clamp(34px, 10vw, 52px)!important}
-  body.present.mfit .sub{font-size:16px!important;max-width:none!important}
-  body.present.mfit .kicker{font-size:12px}
-  body.present.mfit .feat b{font-size:16px}
-  body.present.mfit .feat .d{font-size:14px}
-  body.present.mfit .grid{grid-template-columns:1fr!important}
-  body.present.mfit .grid > *{grid-column:1 / -1!important;min-width:0!important}
+  body.present.mfit h1.title{
+    font-size:clamp(24px, 6.6vw, 34px)!important;
+    text-align:left;max-width:100%;line-height:1.12!important;
+  }
+  body.present.mfit h1.title br{display:none}
+  body.present.mfit h1.big{font-size:clamp(36px, 11vw, 56px)!important}
+  body.present.mfit .sub{font-size:15px!important;max-width:none!important;line-height:1.35!important}
+  body.present.mfit .kicker{font-size:11px}
+  body.present.mfit .feat b{font-size:15px}
+  body.present.mfit .feat .d{font-size:13px;line-height:1.35;color:var(--ink2)}
   body.present.mfit .card{max-width:100%;overflow-wrap:break-word}
-  body.present.mfit .pad div[style*="gap:18px"]:has(img[alt*="QR"]){width:100%;gap:10px!important}
-  body.present.mfit .pad div[style*="gap:18px"]:has(img[alt*="QR"]) > .card{
-    flex:1 1 0!important;width:calc(50% - 8px)!important;max-width:calc(50% - 8px)!important;
-    min-width:0!important;padding:12px 8px!important}
-  body.present.mfit .card img{width:100%!important;height:auto!important;max-width:100%;aspect-ratio:1;object-fit:contain}
-  body.present.mfit .card img + div{font-size:11px!important;overflow-wrap:anywhere}
-  body.present.mfit #s1 .pad, body.present.mfit #s12 .pad{justify-content:center!important}
-  body.present.mfit .phone{width:min(42vw, 200px)!important;height:min(74vw, 360px)!important}
-  body.present.mfit .cmp{font-size:12px}
-  body.present.mfit .cmp th{font-size:11px;padding:8px 3px}
-  body.present.mfit .cmp td{padding:8px 3px;font-size:12px}
-  body.present.mfit .cmp td:first-child{font-size:12px;padding-left:8px;padding-right:6px}
-  body.present.mfit .cmp th:first-child{padding-left:8px}
-  body.present.mfit .yes{font-size:15px}
-  body.present.mfit .no, body.present.mfit .part{font-size:14px}
-  body.present.mfit .costline{flex-wrap:wrap;align-items:flex-start}
-  body.present.mfit .legend{flex-wrap:wrap;margin-bottom:4px}
   body.present.mfit .nav{bottom:calc(8px + env(safe-area-inset-bottom))}
   body.present.mfit .nav i{position:relative}
   body.present.mfit .nav i::after{content:"";position:absolute;inset:-12px}
 
-  /* Slides 2–7 fit the portrait screen without scrolling. Desktop is untouched. */
-  body.present.mfit #s2 .pad,
-  body.present.mfit #s3 .pad,
-  body.present.mfit #s4 .pad,
-  body.present.mfit #s5 .pad,
-  body.present.mfit #s6 .pad,
-  body.present.mfit #s7 .pad{
-    overflow:hidden;gap:8px!important;
-    padding-top:max(12px, env(safe-area-inset-top))!important;
-    padding-bottom:2px!important;
-  }
-  body.present.mfit #s2 h1.title,
-  body.present.mfit #s3 h1.title,
-  body.present.mfit #s4 h1.title,
-  body.present.mfit #s5 h1.title,
-  body.present.mfit #s6 h1.title,
-  body.present.mfit #s7 h1.title{font-size:clamp(20px, 5.6vw, 26px)!important;margin-top:2px!important;line-height:1.12!important}
-  body.present.mfit #s2 .kicker,
-  body.present.mfit #s3 .kicker,
-  body.present.mfit #s4 .kicker,
-  body.present.mfit #s5 .kicker,
-  body.present.mfit #s6 .kicker,
-  body.present.mfit #s7 .kicker{font-size:11px}
+  /* s1 / s12 QR pair stays two-up */
+  body.present.mfit .qr-pair{display:flex!important;flex-direction:row!important;gap:10px!important;width:100%;justify-content:center;align-items:stretch}
+  body.present.mfit .qr-pair > .card{flex:1 1 0!important;min-width:0!important;padding:12px 8px!important}
+  body.present.mfit .qr-pair img{width:100%!important;height:auto!important;max-width:100%;aspect-ratio:1;object-fit:contain}
+  body.present.mfit .qr-url{font-size:11px!important;overflow-wrap:anywhere}
+  body.present.mfit #s1 .pad > div,
+  body.present.mfit #s12 .pad > div{flex:0 0 auto!important}
+  body.present.mfit #s1 .pad{justify-content:center!important;gap:22px!important}
+  body.present.mfit #s12 .pad{justify-content:flex-start!important;gap:12px!important}
+  body.present.mfit #s12 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:6px!important}
+  body.present.mfit #s12 .feat b{font-size:14px}
+  body.present.mfit #s12 .feat .d{font-size:12.5px}
 
-  body.present.mfit #s2 .pad{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;gap:7px!important}
+  /* s2: stats fill from the top, title wraps the full width */
+  body.present.mfit #s2 .pad{
+    overflow:hidden;display:grid!important;grid-template-columns:1fr 1fr;
+    align-content:start;gap:8px!important;
+  }
   body.present.mfit #s2 .pad > div[style*="display:flex"],
   body.present.mfit #s2 .pad > div[style*="display:flex"] > div,
   body.present.mfit #s2 .grid,
@@ -256,24 +233,38 @@
   body.present.mfit #s2 .grid > *{grid-column:auto!important}
   body.present.mfit #s2 .grid > .card:last-child{grid-column:1 / -1!important}
   body.present.mfit #s2 .src{order:20;font-size:11px!important;margin:0!important}
-  body.present.mfit #s2 .card{padding:8px 10px!important}
-  body.present.mfit #s2 .card .n{font-size:26px!important;line-height:1!important}
+  body.present.mfit #s2 h1.title{font-size:clamp(22px, 6.2vw, 28px)!important;margin-top:2px!important}
+  body.present.mfit #s2 .card{padding:10px 10px!important}
+  body.present.mfit #s2 .card .n{font-size:clamp(28px, 8vw, 40px)!important;line-height:1!important}
   body.present.mfit #s2 .card div{font-size:12px!important;line-height:1.25!important}
-  body.present.mfit #s2 .card .n{font-size:26px!important}
   body.present.mfit #s2 .card [style*="margin-top"]{margin-top:4px!important}
   body.present.mfit #s2 .card [style*="gap:22px"],
   body.present.mfit #s2 .card [style*="gap:32px"]{gap:14px!important}
   body.present.mfit #s2 .card [style*="height:52px"]{height:28px!important}
 
-  body.present.mfit #s3 .pad{justify-content:center!important}
-  body.present.mfit #s3 .grid{grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:4px!important}
+  /* s3: two-up problem cards */
+  body.present.mfit #s3 .pad{overflow:hidden;justify-content:flex-start!important}
+  body.present.mfit #s3 .grid{display:grid;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:6px!important;flex:1 1 auto!important;min-height:0;align-content:stretch;grid-auto-rows:1fr}
   body.present.mfit #s3 .grid > *{grid-column:auto!important;min-width:0!important}
   body.present.mfit #s3 .card{padding:10px!important;gap:8px!important}
   body.present.mfit #s3 .card > div > div:first-child{font-size:14px!important;margin-bottom:2px!important;line-height:1.2}
-  body.present.mfit #s3 .muted{font-size:12px!important;line-height:1.28!important}
-  body.present.mfit #s3 .src{font-size:11px!important;margin-top:2px!important}
+  body.present.mfit #s3 .muted{font-size:12px!important;line-height:1.28!important;color:var(--ink2)}
+  body.present.mfit #s3 .src{font-size:11px!important;margin-top:4px!important}
   body.present.mfit #s3 .ico-lg{width:20px;height:20px}
 
+  /* s4–s7: copy on top, phones grow into leftover space */
+  body.present.mfit #s4 .pad,
+  body.present.mfit #s5 .pad,
+  body.present.mfit #s6 .pad,
+  body.present.mfit #s7 .pad{overflow:hidden;gap:8px!important}
+  body.present.mfit #s4 .copy,
+  body.present.mfit #s5 .copy,
+  body.present.mfit #s6 .copy,
+  body.present.mfit #s7 .copy{flex:0 0 auto!important}
+  body.present.mfit #s4 h1.title,
+  body.present.mfit #s5 h1.title,
+  body.present.mfit #s6 h1.title,
+  body.present.mfit #s7 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:4px!important}
   body.present.mfit #s4 .sub,
   body.present.mfit #s5 .sub,
   body.present.mfit #s6 .sub,
@@ -290,35 +281,109 @@
   body.present.mfit #s5 .feat .d,
   body.present.mfit #s6 .feat .d,
   body.present.mfit #s7 .feat .d{font-size:12.5px;line-height:1.28}
-  body.present.mfit #s4 .pad div[style*="flex-direction:column"],
-  body.present.mfit #s5 .pad div[style*="flex-direction:column"],
-  body.present.mfit #s6 .pad div[style*="flex-direction:column"],
-  body.present.mfit #s7 .pad div[style*="flex-direction:column"]{gap:6px!important;margin-top:6px!important}
-  body.present.mfit #s4 .pad > div:has(.phone),
-  body.present.mfit #s5 .pad > div:has(.phone),
-  body.present.mfit #s6 .pad > div:has(.phone),
-  body.present.mfit #s7 .pad > div:has(.phone){
-    flex:1 1 auto!important;min-height:0!important;align-items:flex-end!important;gap:8px!important;
+  body.present.mfit .copy > div[style*="flex-direction:column"]{gap:8px!important;margin-top:8px!important}
+  body.present.mfit .phones{
+    flex:1 1 auto!important;min-height:0!important;max-width:100%;
+    display:flex!important;flex-direction:row!important;
+    justify-content:center!important;align-items:flex-start!important;gap:8px!important;
+    padding-top:6px;
   }
-  body.present.mfit #s4 .pad > div:has(.phone) > div,
-  body.present.mfit #s5 .pad > div:has(.phone) > div,
-  body.present.mfit #s6 .pad > div:has(.phone) > div,
-  body.present.mfit #s7 .pad > div:has(.phone) > div{
-    display:flex!important;flex-direction:column;height:100%;min-height:0;justify-content:flex-end;align-items:center;
+  body.present.mfit .phones > div{
+    margin-top:0!important;display:flex!important;flex-direction:column;
+    height:auto;max-height:100%;justify-content:flex-start;align-items:center;
+    flex:0 0 auto;
   }
-  body.present.mfit #s4 .phone,
-  body.present.mfit #s5 .phone,
-  body.present.mfit #s6 .phone,
-  body.present.mfit #s7 .phone{
-    width:min(34vw, 132px)!important;
-    height:min(46vw, 210px)!important;
-    max-height:100%;
-    flex:0 1 auto!important;
+  body.present.mfit .phones .phone{
+    width:min(44vw, 172px)!important;
+    height:auto!important;
+    aspect-ratio:232 / 376;
+    max-height:calc(100% - 2px);
+    flex:0 0 auto!important;
   }
-  body.present.mfit #s4 .pad > div:has(.phone) > div > div,
-  body.present.mfit #s5 .pad > div:has(.phone) > div > div,
-  body.present.mfit #s6 .pad > div:has(.phone) > div > div,
-  body.present.mfit #s7 .pad > div:has(.phone) > div > div{margin-top:4px!important;font-size:11px!important}
+  body.present.mfit .ph-cap{display:none}
+
+  /* s8: each feature becomes a labeled comparison card */
+  body.present.mfit #s8 .pad{overflow:hidden;gap:8px!important}
+  body.present.mfit #s8 h1.title{font-size:clamp(22px, 6vw, 28px)!important;margin-top:4px!important}
+  body.present.mfit #s8 .card{flex:1 1 auto!important;min-height:0;display:flex!important;flex-direction:column;overflow:hidden}
+  body.present.mfit #s8 .cmp{flex:1;height:100%;display:block}
+  body.present.mfit #s8 thead{display:none}
+  body.present.mfit #s8 tbody{display:flex;flex-direction:column;height:100%;min-height:0}
+  body.present.mfit #s8 tr{
+    display:flex;flex-wrap:wrap;align-items:center;
+    flex:1 1 0;min-height:0;padding:8px 10px;border-top:1px solid var(--line);
+  }
+  body.present.mfit #s8 tr:first-child{border-top:none}
+  body.present.mfit #s8 td{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2px;padding:4px 2px 0!important;flex:1 1 0;min-width:0;border:0!important;background:transparent!important;
+    text-align:center;font-size:18px;
+  }
+  body.present.mfit #s8 td:first-child{
+    flex:0 0 100%;width:100%;align-items:flex-start;text-align:left;
+    padding:0 0 4px!important;font-size:13px!important;
+  }
+  body.present.mfit #s8 td:not(:first-child)::before{
+    content:attr(data-col);font-size:9px;font-weight:700;color:var(--ink2);
+    letter-spacing:.01em;line-height:1.1;text-align:center;
+  }
+  body.present.mfit #s8 td.us{border-radius:8px;background:rgba(0,122,255,.10)!important}
+  body.present.mfit #s8 .yes{font-size:18px}
+  body.present.mfit #s8 .no, body.present.mfit #s8 .part{font-size:16px}
+  body.present.mfit #s8 .legend{align-self:center;gap:12px;font-size:12px;margin-top:4px}
+
+  /* s9 / s11: two columns, compact type, no inner scroll */
+  body.present.mfit #s9 .pad,
+  body.present.mfit #s11 .pad{overflow:hidden;gap:6px!important}
+  body.present.mfit #s9 h1.title,
+  body.present.mfit #s11 h1.title{font-size:clamp(20px, 5.6vw, 26px)!important;margin-top:2px!important}
+  body.present.mfit .split{
+    display:flex!important;flex-direction:row!important;gap:8px!important;
+    flex:1 1 auto!important;min-height:0!important;margin-top:6px!important;align-items:stretch!important;
+  }
+  body.present.mfit .split > .card{
+    flex:1 1 0!important;min-width:0!important;min-height:0!important;
+    padding:10px 10px!important;overflow:hidden;
+  }
+  body.present.mfit #s9 .shead{font-size:11px}
+  body.present.mfit #s9 .feat, body.present.mfit #s11 .feat{gap:7px}
+  body.present.mfit #s9 .feat b, body.present.mfit #s11 .feat b{font-size:12.5px;line-height:1.2}
+  body.present.mfit #s9 .feat .d, body.present.mfit #s11 .feat .d{font-size:11px;line-height:1.25;margin-top:1px;color:var(--ink2)}
+  body.present.mfit #s9 .ico, body.present.mfit #s11 .ico{width:16px;height:16px}
+  body.present.mfit #s9 .card > div[style*="flex-direction:column"],
+  body.present.mfit #s11 .card > div[style*="flex-direction:column"]{gap:7px!important;margin-top:8px!important}
+  body.present.mfit #s11 .card > div:first-child{font-size:13px!important;margin-bottom:0!important}
+  body.present.mfit #s11 .split b{font-size:12px!important;line-height:1.2}
+  body.present.mfit #s11 .split .muted{font-size:10.5px!important;margin-top:1px!important;line-height:1.25!important;color:var(--ink2)}
+  body.present.mfit #s11 .split [style*="padding-bottom"]{padding-bottom:4px!important}
+  body.present.mfit #s11 .split [style*="min-height:14px"]{min-height:6px!important}
+  body.present.mfit #s11 .feat b{font-size:12.5px!important}
+  body.present.mfit #s11 .feat .d{font-size:11px!important}
+
+  /* s10: stacked budget cards, one-line cost rows */
+  body.present.mfit #s10 .pad{overflow:hidden;gap:6px!important}
+  body.present.mfit #s10 h1.title{font-size:clamp(20px, 5.4vw, 24px)!important;margin-top:2px!important}
+  body.present.mfit #s10 .sub{font-size:13px!important;margin-top:2px!important}
+  body.present.mfit #s10 .split{flex-direction:column!important;gap:6px!important;margin-top:4px!important;justify-content:flex-start!important}
+  body.present.mfit #s10 .split > .card{flex:0 1 auto!important;padding:7px 9px!important;overflow:visible}
+  body.present.mfit #s10 .split > .card > div[style*="font-size:32px"]{font-size:20px!important;margin:0 0 4px!important}
+  body.present.mfit #s10 .costbox{padding:4px 7px;margin-bottom:4px}
+  body.present.mfit #s10 .costhead{margin-bottom:1px}
+  body.present.mfit #s10 .costhead .n{font-size:11px}
+  body.present.mfit #s10 .costhead .v{font-size:12px}
+  body.present.mfit #s10 .costline{
+    font-size:10.5px;gap:6px;align-items:baseline;flex-wrap:nowrap;
+  }
+  body.present.mfit #s10 .costline span{
+    min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);
+  }
+  body.present.mfit #s10 .costline b{font-size:10.5px;flex:0 0 auto}
+  body.present.mfit #s10 .muted{font-size:10.5px!important}
+  body.present.mfit #s10 .split > .card > .costbox:nth-child(4) .costline,
+  body.present.mfit #s10 .split > .card > .costbox:nth-child(5) .costline,
+  body.present.mfit #s10 .costbox .muted{display:none}
+  body.present.mfit #s10 .split > .card > div[style*="margin-top:auto"]{margin-top:6px!important;padding-top:6px!important;font-size:12px!important}
+  body.present.mfit #s10 .split > .card > div[style*="margin-top:auto"] b{font-size:14px!important}
 </style>
 </head>
 <body>
@@ -363,15 +428,19 @@
         <p class="sub" style="margin-top:20px;font-size:24px;max-width:540px">Добрые дела в мессенджере</p>
       </div>
       <div style="flex:1.05;display:flex;justify-content:center">
-        <div style="display:flex;gap:18px;align-items:flex-start">
+        <div class="qr-pair" style="display:flex;gap:18px;align-items:flex-start">
           <div class="card" style="padding:20px 22px;text-align:center">
-            <img src="assets/QR%20MAX.png" alt="QR MAX" style="width:220px;height:220px;border-radius:16px;border:1px solid var(--line)">
-            <div style="margin-top:12px;font-weight:800;color:var(--blue);font-size:16px">max.ru/se14233738_bot</div>
+            <a class="qr-link" href="https://max.ru/se14233738_bot" target="_blank" rel="noopener">
+              <img src="assets/QR%20MAX.png" alt="QR MAX" style="width:220px;height:220px;border-radius:16px;border:1px solid var(--line)">
+              <div class="qr-url" style="margin-top:12px;font-size:16px">max.ru/se14233738_bot</div>
+            </a>
             <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">MAX</div>
           </div>
           <div class="card" style="padding:20px 22px;text-align:center">
-            <img src="assets/qr%20tg2.png" alt="QR Telegram" style="width:220px;height:220px;border-radius:16px;border:1px solid var(--line)">
-            <div style="margin-top:12px;font-weight:800;color:var(--blue);font-size:16px">t.me/max_dobro_bot</div>
+            <a class="qr-link" href="https://t.me/max_dobro_bot" target="_blank" rel="noopener">
+              <img src="assets/qr%20tg2.png" alt="QR Telegram" style="width:220px;height:220px;border-radius:16px;border:1px solid var(--line)">
+              <div class="qr-url" style="margin-top:12px;font-size:16px">t.me/max_dobro_bot</div>
+            </a>
             <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">Telegram</div>
           </div>
         </div>
@@ -384,7 +453,7 @@
   <section class="slide" id="s2">
     <div class="pad">
       <div class="kicker"><span class="num">02</span> &nbsp;Рынок и аудитория</div>
-      <h1 class="title" style="margin-top:12px">Готовность аудитории<br>и <span class="accent">барьеры для участия</span></h1>
+      <h1 class="title" style="margin-top:12px">Готовность аудитории<br> и <span class="accent">барьеры для участия</span></h1>
       <div style="display:flex;gap:24px;margin-top:18px;flex:1;min-height:0">
         <div style="flex:.95;display:flex;flex-direction:column;gap:12px">
           <div style="font-weight:800;font-size:14px;color:#E0521F;text-align:center">Целевая аудитория: 16–35 лет</div>
@@ -482,9 +551,9 @@
   <!-- ============ 4 · SOLUTION + VOLUNTEER PRODUCT ============ -->
   <section class="slide" id="s4">
     <div class="pad" style="flex-direction:row;gap:44px;align-items:center">
-      <div style="flex:1.2">
+      <div class="copy" style="flex:1.2">
         <div class="kicker"><span class="num">04</span> &nbsp;Что предлагаем</div>
-        <h1 class="title" style="margin-top:12px">Все события города<br>на <span class="accent">единой карте</span></h1>
+        <h1 class="title" style="margin-top:12px">Все события города<br> на <span class="accent">единой карте</span></h1>
         <p class="sub" style="margin-top:10px;font-size:18px;max-width:560px">Открыл карту, выбрал дело рядом, записался. Без логина и анкеты.</p>
         <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-map"/></svg></div><div><b>Карта и фильтр</b><div class="d">Все актуальные события рядом с домом. Фильтр: экология, животные, помощь людям, городские.</div></div></div>
@@ -492,9 +561,9 @@
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-clock"/></svg></div><div><b>Часы в портфолио</b><div class="d">Участие даёт подтверждённые часы для резюме и баллов к поступлению в вуз.</div></div></div>
         </div>
       </div>
-      <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_map.gif" alt="Карта событий"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карта событий</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_event.gif" alt="Карточка события"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карточка события</div></div>
+      <div class="phones" style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_map.gif" alt="Карта событий"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карта событий</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_event.gif" alt="Карточка события"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карточка события</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>04</div></div>
@@ -503,9 +572,9 @@
   <!-- ============ 5 · GAMIFICATION ============ -->
   <section class="slide" id="s5">
     <div class="pad" style="flex-direction:row;gap:40px;align-items:center">
-      <div style="flex:1.2">
+      <div class="copy" style="flex:1.2">
         <div class="kicker"><span class="num">05</span> &nbsp;Игровые механики</div>
-        <h1 class="title" style="margin-top:12px">Карма, таблица лидеров<br>и <span class="accent">награды в приложении</span></h1>
+        <h1 class="title" style="margin-top:12px">Карма, таблица лидеров<br> и <span class="accent">награды в приложении</span></h1>
         <p class="sub" style="margin-top:10px;font-size:17px;max-width:560px">За дела копится карма, в рейтинге видно, кто активнее, награды остаются в профиле.</p>
         <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-star"/></svg></div><div><b>Карма и уровни</b><div class="d">За подтверждённое участие начисляется карма, растёт уровень. Прогресс фиксируется в профиле.</div></div></div>
@@ -513,9 +582,9 @@
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-shop"/></svg></div><div><b>Магазин наград</b><div class="d">Значки и темы профиля за карму. Награда видна в рейтинге и в чате события.</div></div></div>
         </div>
       </div>
-      <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_shop.gif" alt="Магазин наград"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карма и магазин</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_leaderboard.gif" alt="Таблица лидеров"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Таблица лидеров</div></div>
+      <div class="phones" style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_shop.gif" alt="Магазин наград"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Карма и магазин</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_leaderboard.gif" alt="Таблица лидеров"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Таблица лидеров</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>05</div></div>
@@ -524,18 +593,18 @@
   <!-- ============ 6 · PRODUCT — SMART LAYER ============ -->
   <section class="slide" id="s6">
     <div class="pad" style="flex-direction:row;gap:44px;align-items:center">
-      <div style="flex:1.2">
+      <div class="copy" style="flex:1.2">
         <div class="kicker"><span class="num">06</span> &nbsp;Обучение и учёт</div>
-        <h1 class="title" style="margin-top:12px">Обучение волонтёра<br>и <span class="coral">выдача сертификатов</span></h1>
+        <h1 class="title" style="margin-top:12px">Обучение волонтёра<br> и <span class="coral">выдача сертификатов</span></h1>
         <div style="display:flex;flex-direction:column;gap:16px;margin-top:18px">
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-cap"/></svg></div><div><b>Мини-курсы</b><div class="d">Короткие уроки и тесты, чтобы волонтёр повышал квалификацию.</div></div></div>
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-check"/></svg></div><div><b>Выгрузка сертификатов</b><div class="d">После теста сертификат сохраняется в цифровом портфолио. Файл для резюме или вуза выгружается без писем организатору.</div></div></div>
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-book"/></svg></div><div><b>Волонтёрская книжка</b><div class="d">При сотрудничестве с фондами книжку можно вести в приложении и встроить в общую систему учёта часов, а не собирать бумажки.</div></div></div>
         </div>
       </div>
-      <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_course.gif" alt="Мини-курс"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мини-курс</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_certificate.gif" alt="Сертификат"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Сертификат</div></div>
+      <div class="phones" style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
+        <div style="text-align:center"><div class="phone" style="width:232px;height:376px"><div class="screen"><img src="assets/gif_course.gif" alt="Мини-курс"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мини-курс</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:214px;height:346px"><div class="screen"><img src="assets/gif_certificate.gif" alt="Сертификат"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Сертификат</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>06</div></div>
@@ -544,7 +613,7 @@
   <!-- ============ 7 · PRODUCT (organizer) ============ -->
   <section class="slide" id="s7">
     <div class="pad" style="flex-direction:row;gap:46px;align-items:center">
-      <div style="flex:1.2">
+      <div class="copy" style="flex:1.2">
         <div class="kicker"><span class="num">07</span> &nbsp;Продукт для организатора</div>
         <h1 class="title" style="margin-top:14px">Инструменты <span class="coral">организатора</span></h1>
         <p class="sub" style="margin-top:12px;max-width:560px">Фонды и НКО получают рабочий контур управления событиями, участниками и отчётностью.</p>
@@ -554,9 +623,9 @@
           <div class="feat"><div class="ic"><svg class="ico"><use href="#i-chart"/></svg></div><div><b>Отчётность под грант и регион</b><div class="d">Охваты, заявки, вовлечённость, готовые цифры.</div></div></div>
         </div>
       </div>
-      <div style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
-        <div style="text-align:center"><div class="phone" style="width:212px;height:452px"><div class="screen"><img src="assets/img_organizer_dashboard.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Кабинет</div></div>
-        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:196px;height:420px"><div class="screen"><img src="assets/img_event_management.png"></div></div><div style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мои события</div></div>
+      <div class="phones" style="flex:.8;display:flex;justify-content:center;gap:14px;align-items:center">
+        <div style="text-align:center"><div class="phone" style="width:212px;height:452px"><div class="screen"><img src="assets/img_organizer_dashboard.png"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Кабинет</div></div>
+        <div style="text-align:center;margin-top:34px"><div class="phone" style="width:196px;height:420px"><div class="screen"><img src="assets/img_event_management.png"></div></div><div class="ph-cap" style="font-weight:700;font-size:13px;margin-top:10px;color:var(--muted)">Мои события</div></div>
       </div>
     </div>
     <div class="foot"><div class="brand"><span class="dot"></span><b>MAX&nbsp;Добро</b></div><div>07</div></div>
@@ -582,27 +651,27 @@
           <tbody>
             <tr>
               <td><b>Работает в мессенджере</b></td>
-              <td class="yes us">✓</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Вход без анкеты</b></td>
-              <td class="yes us">✓</td><td class="no">—</td><td class="part">±</td><td class="yes">✓</td><td class="no">—</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="part" data-col="Госуслуги">±</td><td class="yes" data-col="Чаты">✓</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Мотивация и рейтинг</b></td>
-              <td class="yes us">✓</td><td class="part">±</td><td class="no">—</td><td class="no">—</td><td class="no">—</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="part" data-col="Добро.рф">±</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Обучение и сертификаты</b></td>
-              <td class="yes us">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="part">±</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="part" data-col="Фонды">±</td>
             </tr>
             <tr>
               <td><b>Кабинет организатора</b></td>
-              <td class="yes us">✓</td><td class="yes">✓</td><td class="part">±</td><td class="no">—</td><td class="no">—</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="yes" data-col="Добро.рф">✓</td><td class="part" data-col="Госуслуги">±</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
             <tr>
               <td><b>Поиск дел своими словами</b></td>
-              <td class="yes us">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td>
+              <td class="yes us" data-col="MAX">✓</td><td class="no" data-col="Добро.рф">—</td><td class="no" data-col="Госуслуги">—</td><td class="no" data-col="Чаты">—</td><td class="no" data-col="Фонды">—</td>
             </tr>
           </tbody>
         </table>
@@ -620,8 +689,8 @@
   <section class="slide" id="s9">
     <div class="pad">
       <div class="kicker"><span class="num">09</span> &nbsp;Привлечение</div>
-      <h1 class="title" style="margin-top:10px">Привлечение волонтёров<br>и <span class="accent">организаций</span></h1>
-      <div style="display:flex;gap:18px;margin-top:18px;flex:1;min-height:0">
+      <h1 class="title" style="margin-top:10px">Привлечение волонтёров<br> и <span class="accent">организаций</span></h1>
+      <div class="split" style="display:flex;gap:18px;margin-top:18px;flex:1;min-height:0">
         <div class="card" style="flex:1;padding:20px 22px;display:flex;flex-direction:column;min-height:0">
           <div class="shead">Волонтёры</div>
           <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;flex:1;justify-content:space-between">
@@ -653,7 +722,7 @@
       <div class="kicker"><span class="num">10</span> &nbsp;Расходы</div>
       <h1 class="title" style="margin-top:6px;font-size:32px">Доработка за осень, потом <span class="accent">поддержка</span></h1>
       <p class="sub" style="margin-top:4px;font-size:15px;max-width:940px">Смета на доработку готового MVP осенью 2026 и ежемесячное сопровождение после запуска.</p>
-      <div style="display:flex;gap:12px;margin-top:10px;flex:1;min-height:0;align-items:stretch">
+      <div class="split" style="display:flex;gap:12px;margin-top:10px;flex:1;min-height:0;align-items:stretch">
         <div class="card" style="flex:1.22;padding:12px 14px;display:flex;flex-direction:column;min-height:0">
           <div class="muted" style="font-weight:700;font-size:12px">Доработка · осень 2026</div>
           <div style="font-family:var(--disp);font-weight:800;font-size:32px;line-height:1;margin:2px 0 8px">4,12<span style="font-size:14px;color:var(--muted);margin-left:6px">млн ₽</span></div>
@@ -715,7 +784,7 @@
     <div class="pad">
       <div class="kicker"><span class="num">11</span> &nbsp;Готовность и план</div>
       <h1 class="title" style="margin-top:8px">Что уже есть и <span class="green">что планируем</span></h1>
-      <div style="display:flex;gap:16px;margin-top:14px;flex:1;min-height:0;align-items:stretch">
+      <div class="split" style="display:flex;gap:16px;margin-top:14px;flex:1;min-height:0;align-items:stretch">
         <div class="card" style="flex:.92;padding:18px 20px;display:flex;flex-direction:column;min-height:0">
           <div style="font-weight:800;font-size:17px;line-height:1.25">Что уже работает</div>
           <div style="display:flex;flex-direction:column;gap:14px;margin-top:14px;flex:1;justify-content:space-between">
@@ -756,18 +825,22 @@
         </div>
       </div>
       <div style="flex:1;display:flex;justify-content:center">
-        <div style="display:flex;gap:18px;align-items:flex-start">
+        <div class="qr-pair" style="display:flex;gap:18px;align-items:flex-start">
           <div class="card" style="padding:20px 22px;text-align:center">
-            <div style="font-weight:800;font-size:16px;margin-bottom:10px">MAX</div>
-            <img src="assets/QR%20MAX.png" alt="QR MAX" style="width:190px;height:190px;border-radius:16px;border:1px solid var(--line)">
-            <div style="margin-top:12px;font-weight:800;color:var(--blue);font-size:15px">@se14233738_bot</div>
-            <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">max.ru/se14233738_bot</div>
+            <a class="qr-link" href="https://max.ru/se14233738_bot" target="_blank" rel="noopener">
+              <div style="font-weight:800;font-size:16px;margin-bottom:10px;color:var(--ink)">MAX</div>
+              <img src="assets/QR%20MAX.png" alt="QR MAX" style="width:190px;height:190px;border-radius:16px;border:1px solid var(--line)">
+              <div class="qr-url" style="margin-top:12px;font-size:15px">@se14233738_bot</div>
+              <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">max.ru/se14233738_bot</div>
+            </a>
           </div>
           <div class="card" style="padding:20px 22px;text-align:center">
-            <div style="font-weight:800;font-size:16px;margin-bottom:10px">Telegram</div>
-            <img src="assets/qr%20tg2.png" alt="QR Telegram" style="width:190px;height:190px;border-radius:16px;border:1px solid var(--line)">
-            <div style="margin-top:12px;font-weight:800;color:var(--blue);font-size:15px">@max_dobro_bot</div>
-            <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">t.me/max_dobro_bot</div>
+            <a class="qr-link" href="https://t.me/max_dobro_bot" target="_blank" rel="noopener">
+              <div style="font-weight:800;font-size:16px;margin-bottom:10px;color:var(--ink)">Telegram</div>
+              <img src="assets/qr%20tg2.png" alt="QR Telegram" style="width:190px;height:190px;border-radius:16px;border:1px solid var(--line)">
+              <div class="qr-url" style="margin-top:12px;font-size:15px">@max_dobro_bot</div>
+              <div class="muted" style="font-size:12px;font-weight:600;margin-top:2px">t.me/max_dobro_bot</div>
+            </a>
           </div>
         </div>
       </div>
