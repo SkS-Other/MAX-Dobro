@@ -172,7 +172,7 @@ independent parts:
 ### 1. Cloning the repository
 
 ```bash
-git clone https://github.com/ShutovKS/MAX-Dobro.git
+git clone https://github.com/xAFK-BOTx/MAX-Dobro.git
 cd MAX-Dobro
 ```
 
@@ -292,4 +292,4 @@ All commands are run from the root folder of the corresponding service (e.g., `c
 - **Mikhail Danilov** - *Backend
   developer* - [GitHub](https://github.com/seaG7) | [Telegram](https://t.me/yamishadanilov)
 - **Kirill Kornilov** - *Backend developer* - [GitHub](https://github.com/krl76) | [Telegram](https://t.me/krl76)
-- **Kirill Shutov** - *Frontend developer* - [GitHub](https://github.com/ShutovKS) | [Telegram](https://t.me/ShutovKS)
+- **xAFK-BOTx** - *Frontend developer* - [GitHub](https://github.com/xAFK-BOTx)
